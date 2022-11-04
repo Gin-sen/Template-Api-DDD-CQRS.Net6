@@ -1,0 +1,1 @@
+# My.DDD.CQRS.Temp6.Api
