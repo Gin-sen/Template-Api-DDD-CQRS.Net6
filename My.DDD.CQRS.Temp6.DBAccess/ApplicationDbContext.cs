@@ -1,6 +1,6 @@
 ﻿namespace My.DDD.CQRS.Temp6.DBAccess
 {
-  public class Class1
+  public class ApplicationDbContext
   {
 
   }

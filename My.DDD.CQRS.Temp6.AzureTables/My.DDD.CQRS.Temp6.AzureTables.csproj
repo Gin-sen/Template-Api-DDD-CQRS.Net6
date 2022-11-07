@@ -7,13 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="12.0.0" />
-    <PackageReference Include="MediatR" Version="11.0.0" />
+    <PackageReference Include="Azure.Data.Tables" Version="12.6.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\My.DDD.CQRS.Temp6.Contracts\My.DDD.CQRS.Temp6.Contracts.csproj" />
-    <ProjectReference Include="..\My.DDD.CQRS.Temp6.CQRS\My.DDD.CQRS.Temp6.CQRS.csproj" />
+    <ProjectReference Include="..\My.DDD.CQRS.Temp6.AzureStorage\My.DDD.CQRS.Temp6.AzureStorage.csproj" />
     <ProjectReference Include="..\My.DDD.CQRS.Temp6.Domain\My.DDD.CQRS.Temp6.Domain.csproj" />
   </ItemGroup>
 

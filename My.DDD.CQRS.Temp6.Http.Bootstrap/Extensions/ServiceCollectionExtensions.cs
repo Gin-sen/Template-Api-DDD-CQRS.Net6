@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 using My.DDD.CQRS.Temp6.Http.Bootstrap.Helpers;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
+using MediatR;
 
 namespace My.DDD.CQRS.Temp6.Http.Bootstrap.Extensions;
 
@@ -19,6 +20,7 @@ public static class ServiceCollectionExtensions
     //.AddCommonArchitecture(configuration, assembly)
     //.AddHttpControllers()
     services.AddControllers();
+    services.AddMediatR(Assembly.GetExecutingAssembly());
     //.AddHubbixAuthentication()
     //.AddFrenchRouting()
     //.AddDefaultCors(configuration)

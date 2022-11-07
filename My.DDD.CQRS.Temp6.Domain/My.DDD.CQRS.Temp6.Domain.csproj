@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\My.DDD.CQRS.Temp6.CQRS\My.DDD.CQRS.Temp6.CQRS.csproj" />
+  </ItemGroup>
+
 </Project>
