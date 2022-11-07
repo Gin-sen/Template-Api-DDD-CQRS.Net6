@@ -1,4 +1,5 @@
-﻿using My.DDD.CQRS.Temp6.Http.Bootstrap.Extensions;
+﻿using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using My.DDD.CQRS.Temp6.Http.Bootstrap.Extensions;
 
 namespace My.DDD.CQRS.Temp6.Api;
 
@@ -19,7 +20,7 @@ public class Startup
       //.AddDatabase<ApplicationDbContext>(hostEnvironment, configuration);
   }
 
-  public void Configure(WebApplication app)
+  public void Configure(WebApplication app, IWebHostEnvironment environment)
   {
     app.UseHttpArchitecture();
   }

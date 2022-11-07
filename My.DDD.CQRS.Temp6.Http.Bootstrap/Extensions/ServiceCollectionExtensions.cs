@@ -1,6 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
+using My.DDD.CQRS.Temp6.Http.Bootstrap.Helpers;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
 
 namespace My.DDD.CQRS.Temp6.Http.Bootstrap.Extensions;
@@ -27,7 +31,21 @@ public static class ServiceCollectionExtensions
     //.AddHttpSerialization()
     //.AddDocumentation()
     services.AddEndpointsApiExplorer();
-    services.AddSwaggerGen();
+    services.AddApiVersioning(o =>
+    {
+      o.AssumeDefaultVersionWhenUnspecified = true;
+      o.DefaultApiVersion = new ApiVersion(1, 0);
+    });
+    services.AddVersionedApiExplorer(o =>
+    {
+      o.GroupNameFormat = "'v'VVV";
+      o.SubstituteApiVersionInUrl = true;
+    });
+    services.AddSwaggerGen(o =>
+    {
+      o.OperationFilter<SwaggerDefaultValues>();
+    });
+    services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerGenOptions>();
     //.AddHttpErrors()
     services.AddHealthChecks();
 

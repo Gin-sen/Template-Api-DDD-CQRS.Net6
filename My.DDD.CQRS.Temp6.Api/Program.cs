@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using My.DDD.CQRS.Temp6.Http.Bootstrap.Extensions;
 using My.DDD.CQRS.Temp6.Logging.Extensions;
 using Serilog;
@@ -15,7 +16,7 @@ namespace My.DDD.CQRS.Temp6.Api
       startup.ConfigureServices(builder.Services);
       var app = builder.Build();
       // Configure application
-      startup.Configure(app);
+      startup.Configure(app, app.Environment);
       // Run WebApplication
       app.Run();
     }
