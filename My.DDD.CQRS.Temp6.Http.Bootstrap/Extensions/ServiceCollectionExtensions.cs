@@ -20,7 +20,7 @@ public static class ServiceCollectionExtensions
     //.AddCommonArchitecture(configuration, assembly)
     //.AddHttpControllers()
     services.AddControllers();
-    services.AddMediatR(Assembly.GetExecutingAssembly());
+    services.AddMediatR(assembly);
     //.AddHubbixAuthentication()
     //.AddFrenchRouting()
     //.AddDefaultCors(configuration)

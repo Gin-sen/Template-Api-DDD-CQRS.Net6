@@ -52,10 +52,14 @@ public static class ApplicationBuilderExtensions
 
     app
       .UseRouting()
+      // app.UseRequestLocalization();
+      // .UseCors(MyAllowSpecificOrigins);
       //.UseDefaultCors()
-      //.UseAuthentication()
-      //.UseAuthorization()
-      //.UseForwardedHeaders()
+      .UseAuthentication()
+      .UseAuthorization()
+
+      //.UseErrorHandlingMiddlewareWhenNot("/api/health");
+      //.UseForwardedHeaders() // ???????
       .UseEndpoints(endpoints =>
       {
         endpoints.MapControllers();

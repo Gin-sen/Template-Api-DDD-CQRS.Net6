@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\My.DDD.CQRS.Temp6.CQRS\My.DDD.CQRS.Temp6.CQRS.csproj" />
     <ProjectReference Include="..\My.DDD.CQRS.Temp6.Http.Bootstrap\My.DDD.CQRS.Temp6.Http.Bootstrap.csproj" />
     <ProjectReference Include="..\My.DDD.CQRS.Temp6.Logging\My.DDD.CQRS.Temp6.Logging.csproj" />
   </ItemGroup>

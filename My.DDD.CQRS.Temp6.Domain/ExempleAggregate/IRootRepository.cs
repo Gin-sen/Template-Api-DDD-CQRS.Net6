@@ -9,6 +9,6 @@ namespace My.DDD.CQRS.Temp6.Domain.ExempleAggregate
 {
   public interface IRootRepository : IAggregateAzTablesRepository<Root>
   {
-    Root Get(); 
+    Task<Root?> Get(); 
   }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using My.DDD.CQRS.Temp6.CQRS.Commands;
 using My.DDD.CQRS.Temp6.CQRS.Domain;
 using System;
 using System.Collections.Generic;

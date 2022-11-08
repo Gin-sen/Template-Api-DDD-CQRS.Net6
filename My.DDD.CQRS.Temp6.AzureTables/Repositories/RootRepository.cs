@@ -29,10 +29,20 @@ namespace My.DDD.CQRS.Temp6.AzureTables.Repositories
       throw new NotImplementedException();
     }
 
-    public Root Get()
+    public async Task<Root?> Get()
     {
-      throw new NotImplementedException();
-      //var result = new Root();
+      int i = 0;
+      if (_exempleTable == null)
+        return null;
+      var exempleEntities = await _exempleTable.GetAllAsync();
+      var exemples = new Exemple[exempleEntities.Count()];
+      foreach (var exempleEntity in exempleEntities)
+      {
+        exemples[i] = new Exemple(exempleEntity.PartitionKey, exempleEntity.RowKey, exempleEntity.Increment, exempleEntity.Timestamp);
+        i++;
+      }
+      var result = new Root(exemples.AsQueryable());
+      return result;
     }
 
     public void Remove<TEntity>(TEntity entity) where TEntity : IEntityBase
