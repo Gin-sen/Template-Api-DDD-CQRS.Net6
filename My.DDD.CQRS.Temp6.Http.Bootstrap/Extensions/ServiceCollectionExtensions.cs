@@ -49,6 +49,7 @@ public static class ServiceCollectionExtensions
     });
     services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerGenOptions>();
     //.AddHttpErrors()
+    //.AddHealthChecks();
     services.AddHealthChecks();
 
     return services;

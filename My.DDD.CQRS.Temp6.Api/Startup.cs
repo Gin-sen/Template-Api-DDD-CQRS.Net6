@@ -19,7 +19,6 @@ public class Startup
   {
     services
       .AddHttpArchitecture(configuration);
-    services.TryAddScoped<Exemple, >
       //.AddMessagingInHttpContext(configuration)
       //.AddDatabase<ApplicationDbContext>(hostEnvironment, configuration);
   }
