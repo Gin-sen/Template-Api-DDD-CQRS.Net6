@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Maxime Places",
+  "classifications": [ "Api", "DDD", "CQRS" ],
+  "tags": {
+    "language": "C#",
+    "type": "solution"
+  },
+  "identity": "Net6.Ginsen.Template",
+  "name": "Net6.Ginsen.Template",
+  "shortName": "my-ddd-api",
+  "sourceName": "My.DDD.CQRS.Temp6",
+  "defaultName": "Net6.Ginsen.Template",
+  "preferNameDirectory": true,
+  "guids": [
+    "3C8ED947-7C85-4C1B-B2B8-7CB37970B022",
+    "9EB1AEDF-8A31-4F72-803F-25C83AFDB829",
+    "BD2E2770-ABEC-4A06-A0C5-2AAE25216946",
+    "15E57AE2-DCCB-4328-93D7-3FBF5547648F",
+    "07666E6C-FBA6-4E9B-B622-326DC3DDAAB3",
+    "342AA315-DEFE-47C1-A9A3-684889FD3DA1",
+    "39220016-FCE0-42A2-8D3C-5F58F8372B75",
+    "05EF95E2-34BE-412E-AA20-58B67F3E7514",
+    "BF8AD4B6-334A-4E88-AF42-AD7A0398B268",
+    "745137BD-90F0-4165-8573-1F45E7DE7A9E",
+    "5887A2F1-E48A-417D-88CC-2EF1E6FDCB80",
+    "4311AC83-F797-4AFF-8879-77EA73542F2A",
+    "84604806-63F4-4FF0-ABC0-46C71BF025A3",
+    "5042A5DB-A45B-4034-B840-364441F31DFB",
+    "1F2DF6D2-BB28-4217-9DA8-E1D14B0EAAD1"
+  ],
+
+
+  "primaryOutputs": [
+    {
+      "path": "My.DDD.CQRS.Temp6.Api\\My.DDD.CQRS.Temp6.Api.csproj"
+    },
+    {
+      "path": "My.DDD.CQRS.Temp6.Application\\My.DDD.CQRS.Temp6.Application.csproj"
+    },
+    {
+      "path": "My.DDD.CQRS.Temp6.Contracts\\My.DDD.CQRS.Temp6.Contracts.csproj"
+    },
+    {
+      "path": "My.DDD.CQRS.Temp6.Domain\\My.DDD.CQRS.Temp6.Domain.csproj"
+    },
+    {
+      "path": "My.DDD.CQRS.Temp6.AzureTables\\My.DDD.CQRS.Temp6.AzureTables.csproj"
+    },
+    {
+      "path": "My.DDD.CQRS.Temp6.DBAccess\\My.DDD.CQRS.Temp6.DBAccess.csproj"
+    },
+    {
+      "path": "My.DDD.CQRS.Temp6.HttpClient\\My.DDD.CQRS.Temp6.HttpClient.csproj"
+    },
+    {
+      "path": "My.DDD.CQRS.Temp6.AzureStorage\\My.DDD.CQRS.Temp6.AzureStorage.csproj"
+    },
+    {
+      "path": "My.DDD.CQRS.Temp6.CQRS\\My.DDD.CQRS.Temp6.CQRS.csproj"
+    },
+    {
+      "path": "My.DDD.CQRS.Temp6.Http.Bootstrap\\My.DDD.CQRS.Temp6.Http.Bootstrap.csproj"
+    },
+    {
+      "path": "My.DDD.CQRS.Temp6.Logging\\My.DDD.CQRS.Temp6.Logging.csproj"
+    },
+    {
+      "path": "My.DDD.CQRS.Temp6.Messaging\\My.DDD.CQRS.Temp6.Messaging.csproj"
+    },
+    {
+      "path": "My.DDD.CQRS.Temp6.RabbitMQ\\My.DDD.CQRS.Temp6.RabbitMQ.csproj"
+    }
+  ],
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [
+            "**/[Bb]in/**",
+            "**/[Oo]bj/**",
+            ".template.config/**/*",
+            "**/*.lock.json",
+            "**/.vs/**",
+            "*.Tests/**/*"
+          ]
+        }
+      ]
+    }
+  ]
+}
