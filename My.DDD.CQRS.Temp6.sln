@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "My.DDD.CQRS.Temp6.Domain", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "My.DDD.CQRS.Temp6.Contracts", "My.DDD.CQRS.Temp6.Contracts\My.DDD.CQRS.Temp6.Contracts.csproj", "{39220016-FCE0-42A2-8D3C-5F58F8372B75}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.Solution items", "6.Solution items", "{B74E2DE2-522E-4ACF-A6BB-76B3487690F8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7.Solution items", "7.Solution items", "{B74E2DE2-522E-4ACF-A6BB-76B3487690F8}"
 	ProjectSection(SolutionItems) = preProject
 		.template.config\template.json = .template.config\template.json
 		vstemplate.xml = vstemplate.xml
@@ -43,11 +43,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "My.DDD.CQRS.Temp6.RabbitMQ"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "My.DDD.CQRS.Temp6.Messaging", "My.DDD.CQRS.Temp6.Messaging\My.DDD.CQRS.Temp6.Messaging.csproj", "{1F2DF6D2-BB28-4217-9DA8-E1D14B0EAAD1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.Tests", "5.Tests", "{939F592A-052B-453E-8025-1500240EC4F4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.Tests", "6.Tests", "{939F592A-052B-453E-8025-1500240EC4F4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "My.DDD.CQRS.Temp6.Domain.Tests", "My.DDD.CQRS.Temp6.Domain.Tests\My.DDD.CQRS.Temp6.Domain.Tests.csproj", "{ABB842E7-B535-4253-BCB6-C02F94506D89}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "My.DDD.CQRS.Temp6.Application.Tests", "My.DDD.CQRS.Temp6.Application.Tests\My.DDD.CQRS.Temp6.Application.Tests.csproj", "{92633677-BEE5-46E0-951D-38A6726971E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.Job", "5.Job", "{61FD41B6-CCDE-4B5B-A052-0FCE06BB5C89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My.DDD.CQRS.Temp6.RandomJob", "My.DDD.CQRS.Temp6.RandomJob\My.DDD.CQRS.Temp6.RandomJob.csproj", "{4594AF1A-DF42-4A2A-93C5-318ACA6BB871}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My.DDD.CQRS.Temp6.WorkService", "My.DDD.CQRS.Temp6.WorkService\My.DDD.CQRS.Temp6.WorkService.csproj", "{375BC24C-72D3-44E9-8468-AA81CA5E4DC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -115,6 +121,14 @@ Global
 		{92633677-BEE5-46E0-951D-38A6726971E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92633677-BEE5-46E0-951D-38A6726971E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92633677-BEE5-46E0-951D-38A6726971E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4594AF1A-DF42-4A2A-93C5-318ACA6BB871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4594AF1A-DF42-4A2A-93C5-318ACA6BB871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4594AF1A-DF42-4A2A-93C5-318ACA6BB871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4594AF1A-DF42-4A2A-93C5-318ACA6BB871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{375BC24C-72D3-44E9-8468-AA81CA5E4DC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{375BC24C-72D3-44E9-8468-AA81CA5E4DC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{375BC24C-72D3-44E9-8468-AA81CA5E4DC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{375BC24C-72D3-44E9-8468-AA81CA5E4DC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -135,6 +149,8 @@ Global
 		{1F2DF6D2-BB28-4217-9DA8-E1D14B0EAAD1} = {547E316F-8A32-495F-B099-887395A11C6F}
 		{ABB842E7-B535-4253-BCB6-C02F94506D89} = {939F592A-052B-453E-8025-1500240EC4F4}
 		{92633677-BEE5-46E0-951D-38A6726971E2} = {939F592A-052B-453E-8025-1500240EC4F4}
+		{4594AF1A-DF42-4A2A-93C5-318ACA6BB871} = {61FD41B6-CCDE-4B5B-A052-0FCE06BB5C89}
+		{375BC24C-72D3-44E9-8468-AA81CA5E4DC0} = {61FD41B6-CCDE-4B5B-A052-0FCE06BB5C89}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {083E0A83-02C5-4256-B083-0183DD10895B}

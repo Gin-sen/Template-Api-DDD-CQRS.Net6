@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "My.DDD.CQRS.Temp6.WorkService": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
