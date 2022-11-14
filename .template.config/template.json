@@ -31,64 +31,61 @@
     "4594AF1A-DF42-4A2A-93C5-318ACA6BB871",
     "375BC24C-72D3-44E9-8468-AA81CA5E4DC0"
   ],
-
-
-  "primaryOutputs": [
-    {
-      "path": "My.DDD.CQRS.Temp6.Api\\My.DDD.CQRS.Temp6.Api.csproj"
+  "symbols": {
+    "includeTest": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true"
     },
-    {
-      "path": "My.DDD.CQRS.Temp6.Application\\My.DDD.CQRS.Temp6.Application.csproj"
+    "fullNameDockerService": {
+      "type": "derived",
+      "valueSource": "name", // name -> pointe sur le nom du nouveau projet
+      "valueTransform": "lc",
+      "replaces": "my.ddd.cqrs.temp6"
     },
-    {
-      "path": "My.DDD.CQRS.Temp6.Contracts\\My.DDD.CQRS.Temp6.Contracts.csproj"
+    "fullNameDockerImage": {
+      "type": "derived",
+      "valueSource": "name", // name -> pointe sur le nom du nouveau projet
+      "valueTransform": "chainedImage",
+      "replaces": "mydddcqrstemp6"
     },
-    {
-      "path": "My.DDD.CQRS.Temp6.Domain\\My.DDD.CQRS.Temp6.Domain.csproj"
-    },
-    {
-      "path": "My.DDD.CQRS.Temp6.AzureTables\\My.DDD.CQRS.Temp6.AzureTables.csproj"
-    },
-    {
-      "path": "My.DDD.CQRS.Temp6.DBAccess\\My.DDD.CQRS.Temp6.DBAccess.csproj"
-    },
-    {
-      "path": "My.DDD.CQRS.Temp6.HttpClient\\My.DDD.CQRS.Temp6.HttpClient.csproj"
-    },
-    {
-      "path": "My.DDD.CQRS.Temp6.AzureStorage\\My.DDD.CQRS.Temp6.AzureStorage.csproj"
-    },
-    {
-      "path": "My.DDD.CQRS.Temp6.CQRS\\My.DDD.CQRS.Temp6.CQRS.csproj"
-    },
-    {
-      "path": "My.DDD.CQRS.Temp6.Http.Bootstrap\\My.DDD.CQRS.Temp6.Http.Bootstrap.csproj"
-    },
-    {
-      "path": "My.DDD.CQRS.Temp6.Logging\\My.DDD.CQRS.Temp6.Logging.csproj"
-    },
-    {
-      "path": "My.DDD.CQRS.Temp6.Messaging\\My.DDD.CQRS.Temp6.Messaging.csproj"
-    },
-    {
-      "path": "My.DDD.CQRS.Temp6.RabbitMQ\\My.DDD.CQRS.Temp6.RabbitMQ.csproj"
-    },
-    {
-      "path": "My.DDD.CQRS.Temp6.RandomJob\\My.DDD.CQRS.Temp6.RandomJob.csproj"
-    },
-    {
-      "path": "My.DDD.CQRS.Temp6.WorkService\\My.DDD.CQRS.Temp6.WorkService.csproj"
-    },
-    {
-      "path": "My.DDD.CQRS.Temp6.Application.Tests\\My.DDD.CQRS.Temp6.Application.Tests.csproj"
-    },
-    {
-      "path": "My.DDD.CQRS.Temp6.Domain.Tests\\My.DDD.CQRS.Temp6.Domain.Tests.csproj"
+    "chartFolderRename": {
+      "type": "derived",
+      "valueSource": "name",
+      "valueTransform": "chainedFolder",
+      "fileRename": "my-ddd-cqrs-temp6-api"
     }
-  ],
+  },
+  "forms": {
+    "chainedImage": {
+      "identifier": "chain",
+      "steps": [ "dotToNull", "lc" ] // An array of names of other transformations (applied in the order they appear in the array)
+    },
+    "dotToNull": {
+      "identifier": "replace",
+      "pattern": "\\.", // A regular expression matching the characters to replace
+      "replacement": "" // The replacement for the matched characters
+    },
+    "chainedFolder": {
+      "identifier": "chain",
+      "steps": [ "dotToDash", "lc" ]
+    },
+    "dotToDash": {
+      "identifier": "replace",
+      "pattern": "\\.",
+      "replacement": "-"
+    },
+    "lc": {
+      "identifier": "lowerCase"
+    }
+  },
   "sources": [
     {
       "modifiers": [
+        {
+          "condition": "(!includeTest)",
+          "exclude": [ "*.Tests/**/*" ]
+        },
         {
           "exclude": [
             "**/[Bb]in/**",

@@ -51,9 +51,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "My.DDD.CQRS.Temp6.Applicati
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.Job", "5.Job", "{61FD41B6-CCDE-4B5B-A052-0FCE06BB5C89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My.DDD.CQRS.Temp6.RandomJob", "My.DDD.CQRS.Temp6.RandomJob\My.DDD.CQRS.Temp6.RandomJob.csproj", "{4594AF1A-DF42-4A2A-93C5-318ACA6BB871}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "My.DDD.CQRS.Temp6.RandomJob", "My.DDD.CQRS.Temp6.RandomJob\My.DDD.CQRS.Temp6.RandomJob.csproj", "{4594AF1A-DF42-4A2A-93C5-318ACA6BB871}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My.DDD.CQRS.Temp6.WorkService", "My.DDD.CQRS.Temp6.WorkService\My.DDD.CQRS.Temp6.WorkService.csproj", "{375BC24C-72D3-44E9-8468-AA81CA5E4DC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "My.DDD.CQRS.Temp6.WorkService", "My.DDD.CQRS.Temp6.WorkService\My.DDD.CQRS.Temp6.WorkService.csproj", "{375BC24C-72D3-44E9-8468-AA81CA5E4DC0}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{2096BBA1-7D9A-440B-AA87-18D00696F9D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -129,6 +131,10 @@ Global
 		{375BC24C-72D3-44E9-8468-AA81CA5E4DC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{375BC24C-72D3-44E9-8468-AA81CA5E4DC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{375BC24C-72D3-44E9-8468-AA81CA5E4DC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2096BBA1-7D9A-440B-AA87-18D00696F9D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2096BBA1-7D9A-440B-AA87-18D00696F9D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2096BBA1-7D9A-440B-AA87-18D00696F9D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2096BBA1-7D9A-440B-AA87-18D00696F9D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

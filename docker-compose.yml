@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  my.ddd.cqrs.temp6.api:
+    image: ${DOCKER_REGISTRY-}mydddcqrstemp6api
+    build:
+      context: .
+      dockerfile: My.DDD.CQRS.Temp6.Api/Dockerfile
