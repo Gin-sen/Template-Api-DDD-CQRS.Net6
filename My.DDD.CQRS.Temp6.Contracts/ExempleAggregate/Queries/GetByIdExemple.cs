@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace My.DDD.CQRS.Temp6.Contracts.ExempleAggregate.Queries
 {
-  internal class GetExemple : IRequest<IList<ExempleResult>>
+  public class GetByIdExemple : IRequest<ExempleResult?>
   {
-    public string ExempleString { get; }
+    public string ExempleString { get; set; }
   }
 }

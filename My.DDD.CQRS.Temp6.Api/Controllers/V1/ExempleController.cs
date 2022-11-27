@@ -18,21 +18,31 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
       _mediator = mediator;
     }
 
-    // GET: api/<ExempleController>/CreateOrUpdate
-    [HttpGet("CreateOrUpdate")]
-    public async Task<IActionResult> CreateOrIncrementExemple([FromQuery] CreateOrIncrementExemple command)
+    // POST: api/<ExempleController>
+    [HttpPost]
+    public async Task<IActionResult> CreateOrIncrementExemple([FromBody] CreateOrIncrementExemple command)
     {
       var res = await _mediator.Send(command);
 
       return Ok(res);
     }
 
-    // GET: api/<ExempleController>/List
-    [HttpGet("List")]
+    // GET: api/<ExempleController>
+    [HttpGet]
     public async Task<IActionResult> ListAllExemple()
     {
       var res = await _mediator.Send(new ListExemple());
 
+      return Ok(res);
+    }
+
+    // GET: api/<ExempleController>/{exempleString}
+    [HttpGet("{exempleString}")]
+    public async Task<IActionResult> GetByIdExemple([FromRoute] string exempleString)
+    {
+      var res = await _mediator.Send(new GetByIdExemple() { ExempleString = exempleString });
+      if (res == null)
+        return NotFound();
       return Ok(res);
     }
   }
