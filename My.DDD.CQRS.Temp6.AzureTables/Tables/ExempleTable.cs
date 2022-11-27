@@ -44,7 +44,7 @@ namespace My.DDD.CQRS.Temp6.AzureTables.Tables
 
     public async Task<IEnumerable<ExempleEntity>> GetAllAsync()
     {
-      return await GetEntitiesAsync($"PartitionKey eq '*'");
+      return await GetEntitiesAsync($"PartitionKey ne ''");
     }
   }
 }

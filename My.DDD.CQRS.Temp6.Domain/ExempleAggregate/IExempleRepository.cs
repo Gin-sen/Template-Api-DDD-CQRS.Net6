@@ -11,6 +11,8 @@ namespace My.DDD.CQRS.Temp6.Domain.ExempleAggregate
 
     Task<Exemple> GetAsync(string exemple, CancellationToken cancellationToken);
 
+    Task<IEnumerable<Exemple>> GetAllAsync(CancellationToken cancellationToken);
+
     Task AddAsync(string exemple, CancellationToken cancellationToken);
 
     Task AddRangeAsync(IEnumerable<Exemple> entities, CancellationToken cancellationToken);

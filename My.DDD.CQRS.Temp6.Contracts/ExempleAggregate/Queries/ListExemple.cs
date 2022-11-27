@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace My.DDD.CQRS.Temp6.Contracts.ExempleAggregate.Queries
 {
-  public class ListExemple : IRequest<IList<ListExempleResult>>
+  public class ListExemple : IRequest<IList<ExempleResult>>
   {
   }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using My.DDD.CQRS.Temp6.Contracts.ExempleAggregate.Commands;
+using My.DDD.CQRS.Temp6.Contracts.ExempleAggregate.Queries;
 
 namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
 {
@@ -19,9 +20,18 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
 
     // GET: api/<ExempleController>/CreateOrUpdate
     [HttpGet("CreateOrUpdate")]
-    public async Task<IActionResult> Get([FromQuery] CreateOrIncrementExemple query)
+    public async Task<IActionResult> CreateOrIncrementExemple([FromQuery] CreateOrIncrementExemple command)
     {
-      var res = await _mediator.Send(query);
+      var res = await _mediator.Send(command);
+
+      return Ok(res);
+    }
+
+    // GET: api/<ExempleController>/List
+    [HttpGet("List")]
+    public async Task<IActionResult> ListAllExemple()
+    {
+      var res = await _mediator.Send(new ListExemple());
 
       return Ok(res);
     }

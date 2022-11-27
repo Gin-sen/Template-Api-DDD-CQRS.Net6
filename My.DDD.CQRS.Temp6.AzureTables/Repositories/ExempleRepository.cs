@@ -29,6 +29,17 @@ namespace My.DDD.CQRS.Temp6.AzureTables.Repositories
       throw new NotImplementedException();
     }
 
+    public async Task<IEnumerable<Exemple>> GetAllAsync(CancellationToken cancellationToken)
+    {
+      var resultRequest = await _exempleTable.GetAllAsync();
+      var length = resultRequest.Count();
+      var result = new List<Exemple>();
+      foreach (var element in resultRequest) {
+        result.Add(new Exemple(element.PartitionKey, element.RowKey, element.Increment, element.Timestamp));
+      }
+      return result.AsEnumerable();
+    }
+
     public async Task<Exemple> GetAsync(string exemple, CancellationToken cancellationToken)
     {
       var result = await _exempleTable.GetExempleAsync(exemple, exemple);
