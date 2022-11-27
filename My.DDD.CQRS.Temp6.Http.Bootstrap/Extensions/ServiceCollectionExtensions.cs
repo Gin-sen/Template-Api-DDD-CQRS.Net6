@@ -13,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using My.DDD.CQRS.Temp6.Domain.ExempleAggregate;
 using My.DDD.CQRS.Temp6.AzureTables.Repositories;
 using My.DDD.CQRS.Temp6.AzureTables;
-using My.DDD.CQRS.Temp6.HttpClient;
+using My.DDD.CQRS.Temp6.HttpClients;
 
 namespace My.DDD.CQRS.Temp6.Http.Bootstrap.Extensions;
 

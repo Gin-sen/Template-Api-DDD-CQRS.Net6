@@ -2,7 +2,7 @@
 using My.DDD.CQRS.Temp6.Domain.TodoAggregate;
 using My.DDD.CQRS.Temp6.HttpClients.Clients;
 
-namespace My.DDD.CQRS.Temp6.HttpClient
+namespace My.DDD.CQRS.Temp6.HttpClients
 {
   public static class DependencyInjection
   {

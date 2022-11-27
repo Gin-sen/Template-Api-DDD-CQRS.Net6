@@ -11,15 +11,15 @@ namespace My.DDD.CQRS.Temp6.Domain.TodoAggregate
   {
 
     [JsonPropertyName("userId")]
-    public int UserId;
+    public int UserId { get; set; }
 
     [JsonPropertyName("id")]
-    public int Id;
+    public int Id { get; set; }
 
     [JsonPropertyName("title")]
-    public string Title;
+    public string Title { get; set; }
 
     [JsonPropertyName("completed")]
-    public bool Completed;
+    public bool Completed { get; set; }
   }
 }

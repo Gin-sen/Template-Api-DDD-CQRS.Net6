@@ -18,7 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\My.DDD.CQRS.Temp6.Application\My.DDD.CQRS.Temp6.Application.csproj" />
     <ProjectReference Include="..\My.DDD.CQRS.Temp6.AzureTables\My.DDD.CQRS.Temp6.AzureTables.csproj" />
-    <ProjectReference Include="..\My.DDD.CQRS.Temp6.HttpClient\My.DDD.CQRS.Temp6.HttpClients.csproj" />
+    <ProjectReference Include="..\My.DDD.CQRS.Temp6.HttpClients\My.DDD.CQRS.Temp6.HttpClients.csproj" />
     <ProjectReference Include="..\My.DDD.CQRS.Temp6.Logging\My.DDD.CQRS.Temp6.Logging.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,7 @@
 ﻿using My.DDD.CQRS.Temp6.Domain.TodoAggregate;
 using System;
 using System.Net.Http.Json;
+using System.Text.Json;
 using Http = System.Net.Http;
 
 namespace My.DDD.CQRS.Temp6.HttpClients.Clients
@@ -11,14 +12,20 @@ namespace My.DDD.CQRS.Temp6.HttpClients.Clients
 
     private readonly Http.HttpClient _httpClient;
 
-    public PlaceholderClient(IHttpClientFactory httpClient)
+    public PlaceholderClient(Http.HttpClient httpClient)
     {
       _httpClient = httpClient;
     }
 
     public async Task<Todo?> GetTodo(int id)
     {
-      return await _httpClient.GetFromJsonAsync<Todo>($"todos/{id}");
+      using HttpResponseMessage response = await _httpClient.GetAsync($"todos/{id}");
+      response.EnsureSuccessStatusCode();
+      var jsonResponse = await response.Content.ReadAsStringAsync();
+      Todo? result = JsonSerializer.Deserialize<Todo>(jsonResponse);
+      if (result == null)
+        return null;
+      return result;
     }
   }
 }

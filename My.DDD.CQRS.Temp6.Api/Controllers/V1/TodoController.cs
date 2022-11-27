@@ -22,7 +22,7 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
     [HttpGet("{id}")]
     public async Task<IActionResult> GetByIdTodo([FromRoute] int id)
     {
-      var res = await _mediator.Send(new GetByIdTodo());
+      var res = await _mediator.Send(new GetByIdTodo() { TodoId = id });
       if (res == null)
         return NotFound();
       return Ok(res);
