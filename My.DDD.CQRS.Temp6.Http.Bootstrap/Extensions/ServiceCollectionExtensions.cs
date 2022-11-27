@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using My.DDD.CQRS.Temp6.Domain.ExempleAggregate;
 using My.DDD.CQRS.Temp6.AzureTables.Repositories;
 using My.DDD.CQRS.Temp6.AzureTables;
+using My.DDD.CQRS.Temp6.HttpClient;
 
 namespace My.DDD.CQRS.Temp6.Http.Bootstrap.Extensions;
 
@@ -30,6 +31,7 @@ public static class ServiceCollectionExtensions
     services.AddContractsLayer();
     services.TryAddAzureTables(configuration["ConnectionStrings:AzureTables"]);
     services.TryAddAzureTablesRepositories();
+    services.AddHttpServices();
 
     //.AddHubbixAuthentication()
     //.AddFrenchRouting()

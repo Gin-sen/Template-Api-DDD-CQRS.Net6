@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using My.DDD.CQRS.Temp6.Contracts.ExempleAggregate.Queries;
+using My.DDD.CQRS.Temp6.Contracts.TodoAggregate.Queries;
 
 namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
 {
@@ -22,9 +22,10 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
     [HttpGet("{id}")]
     public async Task<IActionResult> GetByIdTodo([FromRoute] int id)
     {
-      //var res = await _mediator.Send(new ListExemple());
-
-      return Ok();
+      var res = await _mediator.Send(new GetByIdTodo());
+      if (res == null)
+        return NotFound();
+      return Ok(res);
     }
   }
 }

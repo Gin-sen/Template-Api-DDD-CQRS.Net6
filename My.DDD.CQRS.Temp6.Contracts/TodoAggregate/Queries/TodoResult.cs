@@ -9,12 +9,12 @@ namespace My.DDD.CQRS.Temp6.Contracts.TodoAggregate.Queries
 {
   public class TodoResult
   {
-    public int UserId;
+    public int UserId { get; set; }
 
-    public int Id;
+    public int Id { get; set; }
 
-    public string Title;
+    public string Title { get; set; }
 
-    public bool Completed;
+    public bool Completed { get; set; }
   }
 }

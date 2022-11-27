@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace My.DDD.CQRS.Temp6.Contracts.TodoAggregate.Queries
 {
-  public class GetTodo : IRequest<TodoResult?>
+  public class GetByIdTodo : IRequest<TodoResult?>
   {
-    public int ExempleString { get; set; }
+    public int TodoId { get; set; }
   }
 }
