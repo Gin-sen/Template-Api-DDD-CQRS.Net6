@@ -31,7 +31,7 @@ namespace My.DDD.CQRS.Temp6.AzureTables.Tables
       ExempleEntity exemple = await GetExempleAsync(exempleString1, exempleString2);
       if (exemple != null)
       {
-        exemple.Increment = exemple.Increment++;
+        exemple.Increment++;
         await InsertOrUpdateEntityAsync(exemple);
       }
       else

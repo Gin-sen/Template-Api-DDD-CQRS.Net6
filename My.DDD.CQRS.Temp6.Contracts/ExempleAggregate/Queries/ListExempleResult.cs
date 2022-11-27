@@ -1,5 +1,4 @@
-﻿using My.DDD.CQRS.Temp6.CQRS.Queries;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

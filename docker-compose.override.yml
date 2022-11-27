@@ -3,7 +3,7 @@ version: '3.4'
 services:
   my.ddd.cqrs.temp6.api:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
       - "80"
@@ -11,3 +11,9 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  local.azurite:
+    ports:
+      - "10000:10000"
+      - "10001:10001"
+      - "10002:10002"

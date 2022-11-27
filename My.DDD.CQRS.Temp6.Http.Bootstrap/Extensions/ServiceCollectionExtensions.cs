@@ -7,6 +7,12 @@ using My.DDD.CQRS.Temp6.Http.Bootstrap.Helpers;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
 using MediatR;
+using My.DDD.CQRS.Temp6.Application;
+using My.DDD.CQRS.Temp6.Contracts;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using My.DDD.CQRS.Temp6.Domain.ExempleAggregate;
+using My.DDD.CQRS.Temp6.AzureTables.Repositories;
+using My.DDD.CQRS.Temp6.AzureTables;
 
 namespace My.DDD.CQRS.Temp6.Http.Bootstrap.Extensions;
 
@@ -20,7 +26,11 @@ public static class ServiceCollectionExtensions
     //.AddCommonArchitecture(configuration, assembly)
     //.AddHttpControllers()
     services.AddControllers();
-    services.AddMediatR(assembly);
+    services.AddApplicationLayer();
+    services.AddContractsLayer();
+    services.TryAddAzureTables(configuration["ConnectionStrings:AzureTables"]);
+    services.TryAddAzureTablesRepositories();
+
     //.AddHubbixAuthentication()
     //.AddFrenchRouting()
     //.AddDefaultCors(configuration)

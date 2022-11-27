@@ -1,4 +1,4 @@
-﻿using My.DDD.CQRS.Temp6.CQRS.Queries;
+﻿using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace My.DDD.CQRS.Temp6.Contracts.ExempleAggregate.Queries
 {
-  internal class GetExemple : IQueryRequest<IList<ListExempleResult>>
+  internal class GetExemple : IRequest<IList<ListExempleResult>>
   {
     public string ExempleString1 { get; }
     public string ExempleString2 { get; }

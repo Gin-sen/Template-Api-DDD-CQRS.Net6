@@ -14,7 +14,7 @@ public static class ApplicationBuilderExtensions
     var provider = app.Services.GetService<IApiVersionDescriptionProvider>();
 
     // Configure the HTTP request pipeline.
-    if (app.Environment.IsDevelopment())
+    if (app.Environment.IsDevelopment() || app.Environment.EnvironmentName == "Docker")
     {
       //app.UseSwagger(c => c.RouteTemplate = "/swagger/{documentname}/swagger.json");
       //app.UseSwaggerUI(options =>

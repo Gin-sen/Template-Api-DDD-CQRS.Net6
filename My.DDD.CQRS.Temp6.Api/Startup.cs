@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using My.DDD.CQRS.Temp6.CQRS.Events;
 using My.DDD.CQRS.Temp6.Http.Bootstrap.Extensions;
 using System.ComponentModel.Design;
 

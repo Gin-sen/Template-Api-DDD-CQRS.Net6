@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="11.0.0" />
+    <PackageReference Include="MediatR" Version="11.1.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
@@ -16,6 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\My.DDD.CQRS.Temp6.Application\My.DDD.CQRS.Temp6.Application.csproj" />
+    <ProjectReference Include="..\My.DDD.CQRS.Temp6.AzureTables\My.DDD.CQRS.Temp6.AzureTables.csproj" />
     <ProjectReference Include="..\My.DDD.CQRS.Temp6.Logging\My.DDD.CQRS.Temp6.Logging.csproj" />
   </ItemGroup>
 

@@ -1,5 +1,6 @@
-﻿using My.DDD.CQRS.Temp6.CQRS.Commands;
+﻿using MediatR;
 using My.DDD.CQRS.Temp6.Contracts.ExempleAggregate.Commands;
+using My.DDD.CQRS.Temp6.Domain.ExempleAggregate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +9,22 @@ using System.Threading.Tasks;
 
 namespace My.DDD.CQRS.Temp6.Application.ExempleAggregate.Commands
 {
-  public class CreateOrIncrementExempleCommand : 
-    ICommandHandler<CreateOrIncrementExemple, CreateOrIncrementResult>
+  public class CreateOrIncrementExempleCommand :
+    IRequestHandler<CreateOrIncrementExemple, CreateOrIncrementResult>
   {
-    public Task<CreateOrIncrementResult> Handle(CreateOrIncrementExemple request,
+    private readonly IExempleRepository _exempleRepository;
+
+    public CreateOrIncrementExempleCommand(IExempleRepository exempleRepository)
+    {
+      _exempleRepository = exempleRepository;
+    }
+
+    public async Task<CreateOrIncrementResult> Handle(CreateOrIncrementExemple request,
       CancellationToken cancellationToken)
     {
-      throw new NotImplementedException();
+      await _exempleRepository.AddAsync(request.StringExemple, cancellationToken);
+      var result = await _exempleRepository.GetAsync(request.StringExemple, cancellationToken);
+      return new CreateOrIncrementResult() { StringExemple = result.PartitionKey, Increment = result.Increment };
     }
   }
 }

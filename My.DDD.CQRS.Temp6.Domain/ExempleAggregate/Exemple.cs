@@ -1,39 +1,38 @@
-﻿using My.DDD.CQRS.Temp6.CQRS.Domain;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace My.DDD.CQRS.Temp6.AzureTables.Entities
+namespace My.DDD.CQRS.Temp6.Domain.ExempleAggregate
 {
   /// <summary>
   /// This is an exemple of how Azure Table Entities work
   /// Add as many row as you like by adding fields to this class
   /// </summary>
-  public class Exemple : Entity
+  public class Exemple
   {
     /// <summary>
     /// Les partitions sont le premier index cherché;
     /// pour des recherches rapides, bien penser 
     /// à quoi mettre dans la PartitionKey
     /// </summary>
-    public string PartitionKey { get; private set; }
+    public string PartitionKey { get; set; }
 
     /// <summary>
     /// Deuxième index cherché en recherche rapide
     /// </summary>
-    public string RowKey { get; private set; }
+    public string RowKey { get; set; }
 
     /// <summary>
     /// Incrément 
     /// </summary>
-    public int Increment { get; private set; }
+    public int Increment { get; set; }
 
     /// <summary>
     /// 
     /// </summary>
-    public DateTimeOffset? Timestamp { get; private set; }
+    public DateTimeOffset? Timestamp { get; set; }
 
 
     /// <summary>
@@ -60,6 +59,10 @@ namespace My.DDD.CQRS.Temp6.AzureTables.Entities
       RowKey = exampleString2;
       Increment = increment;
       Timestamp = timeStamp;
+    }
+
+    public Exemple()
+    {
     }
   }
 }

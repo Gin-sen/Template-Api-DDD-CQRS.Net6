@@ -44,6 +44,7 @@ namespace My.DDD.CQRS.Temp6.AzureStorage.Tables
     {
       var tableClient = GetTableClient();
       var res = await tableClient.UpsertEntityAsync(tableEntity);
+      Console.WriteLine(res);
     }
 
     protected async Task InsertEntityAsync(T tableEntity)
