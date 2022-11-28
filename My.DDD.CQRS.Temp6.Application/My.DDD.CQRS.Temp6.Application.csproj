@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\My.DDD.CQRS.Temp6.Contracts\My.DDD.CQRS.Temp6.Contracts.csproj" />
+    <ProjectReference Include="..\My.DDD.CQRS.Temp6.DBAccess\My.DDD.CQRS.Temp6.DBAccess.csproj" />
     <ProjectReference Include="..\My.DDD.CQRS.Temp6.Domain\My.DDD.CQRS.Temp6.Domain.csproj" />
   </ItemGroup>
 

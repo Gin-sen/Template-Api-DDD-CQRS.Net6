@@ -22,9 +22,9 @@ public class Startup
       .AddHttpArchitecture(configuration);
     //.AddMessagingInHttpContext(configuration)
 
-    var connectionString = configuration["ConnectionStrings:MariaDB"];
-    //var serverVersion = new MariaDbServerVersion(ServerVersion.AutoDetect(connectionString));
+    services.AddSingleton<FakeBdContext>();
 
+    var connectionString = configuration["ConnectionStrings:MariaDB"];
     services.AddDbContext<ApplicationDbContext>(
             dbContextOptions => dbContextOptions
                 .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))

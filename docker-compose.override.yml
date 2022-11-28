@@ -3,14 +3,16 @@ version: '3.4'
 services:
   my.ddd.cqrs.temp6.api:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ConnectionStrings__AzureTables=AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;DefaultEndpointsProtocol=http;BlobEndpoint=http://localazurite:10000/devstoreaccount1;QueueEndpoint=http://localazurite:10001/devstoreaccount1;TableEndpoint=http://localazurite:10002/devstoreaccount1;
+      - ConnectionStrings__MariaDB=server=localmariadb;port=3308;userid=root;password=exemple;database=mydddcqrstemp6_db;SslMode=Preferred;ConvertZeroDatetime=True;AllowZeroDatetime=True
     ports:
       - "80"
       - "443"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https/:ro
 
   local.azurite:
     ports:
@@ -23,7 +25,7 @@ services:
       - "3308:3308"
     environment:
       - MYSQL_TCP_PORT=3308
-      - MYSQL_ROOT_PASSWORD=example
+      - MYSQL_ROOT_PASSWORD=exemple
       ## Creation de la db au lancement du container
       #- MYSQL_DATABASE=mydddcqrstemp6_db
       ## Auth
