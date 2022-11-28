@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Commands.Todos.Fake;
+using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Commands.Users.Fake;
 using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Todos.Fake;
 using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Users.Fake;
 
@@ -18,7 +20,7 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
       _mediator = mediator;
     }
 
-
+    #region CRUD_TODOS
 
     // GET: api/<FakeController>/{id}
     [HttpGet("todos/{id}")]
@@ -41,8 +43,21 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
       return Ok(res);
     }
 
-    // GET: api/<FakeController>/users/{id}
-    [HttpGet("users/{id}")]
+
+    // POST: api/<FakeController>/todos
+    [HttpPost("todos")]
+    public async Task<IActionResult> FakeCreateTodo([FromBody] FakeCreateTodo dto)
+    {
+      var res = await _mediator.Send(dto);
+      if (!res)
+        return BadRequest();
+      return Created($"{dto.Id}", dto);
+    }
+      #endregion
+
+      #region CRUD_USERS
+      // GET: api/<FakeController>/users/{id}
+      [HttpGet("users/{id}")]
     public async Task<IActionResult> FakeGetByIdUser([FromRoute] int id)
     {
       var res = await _mediator.Send(new FakeGetByIdUser() { UserId = id });
@@ -61,5 +76,16 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
         return NotFound();
       return Ok(res);
     }
+
+    // POST: api/<FakeController>/todos
+    [HttpPost("users")]
+    public async Task<IActionResult> FakeCreateUser([FromBody] FakeCreateUser dto)
+    {
+      var res = await _mediator.Send(dto);
+      if (!res)
+        return BadRequest();
+      return Created($"{dto.Id}", dto);
+    }
+    #endregion
   }
 }

@@ -12,6 +12,17 @@ services:
       dockerfile: My.DDD.CQRS.Temp6.Api/Dockerfile
     networks:
     - backend_net
+
+  my.ddd.cqrs.temp6.workservice:
+    image: ${DOCKER_REGISTRY-}mydddcqrstemp6workservice
+    build:
+      context: .
+      dockerfile: My.DDD.CQRS.Temp6.WorkService/Dockerfile
+    container_name: mydddcqrstemp6workservice
+    depends_on:
+    - my.ddd.cqrs.temp6.api
+    networks:
+    - backend_net
       
   local.azurite:
     image: mcr.microsoft.com/azure-storage/azurite
