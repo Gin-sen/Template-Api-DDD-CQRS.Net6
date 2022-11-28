@@ -1,4 +1,6 @@
-﻿using My.DDD.CQRS.Temp6.Domain.TodoAggregate;
+﻿using My.DDD.CQRS.Temp6.Domain.PlaceholderAggregate;
+using My.DDD.CQRS.Temp6.Domain.PlaceholderAggregate.Todos;
+using My.DDD.CQRS.Temp6.Domain.PlaceholderAggregate.Users;
 using System;
 using System.Net.Http.Json;
 using System.Text.Json;
@@ -6,7 +8,7 @@ using Http = System.Net.Http;
 
 namespace My.DDD.CQRS.Temp6.HttpClients.Clients
 {
-  public class PlaceholderClient : IPlaceholderClient
+    public class PlaceholderClient : IPlaceholderClient
   {
     private const string ApiKey = "hello";
 
@@ -23,6 +25,17 @@ namespace My.DDD.CQRS.Temp6.HttpClients.Clients
       response.EnsureSuccessStatusCode();
       var jsonResponse = await response.Content.ReadAsStringAsync();
       Todo? result = JsonSerializer.Deserialize<Todo>(jsonResponse);
+      if (result == null)
+        return null;
+      return result;
+    }
+
+    public async Task<User?> GetUser(int id)
+    {
+      using HttpResponseMessage response = await _httpClient.GetAsync($"users/{id}");
+      response.EnsureSuccessStatusCode();
+      var jsonResponse = await response.Content.ReadAsStringAsync();
+      User? result = JsonSerializer.Deserialize<User>(jsonResponse);
       if (result == null)
         return null;
       return result;

@@ -4,9 +4,14 @@ services:
   my.ddd.cqrs.temp6.api:
     image: ${DOCKER_REGISTRY-}mydddcqrstemp6api
     container_name: mydddcqrstemp6api
+    depends_on:
+    - local.azurite
+    - local.mariadb
     build:
       context: .
       dockerfile: My.DDD.CQRS.Temp6.Api/Dockerfile
+    networks:
+    - backend_net
       
   local.azurite:
     image: mcr.microsoft.com/azure-storage/azurite
@@ -20,3 +25,20 @@ services:
       - "--tableHost"
       - "0.0.0.0"
       - "--disableProductStyleUrl"
+    networks:
+    - backend_net
+      
+  local.mariadb:
+    image: mariadb:10.5
+    container_name: localmariadb
+    hostname: localmariadb
+    restart: always
+    command:
+    - "--port"
+    - "3308"
+    networks:
+    - backend_net
+
+
+networks:
+  backend_net:
