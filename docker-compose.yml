@@ -18,6 +18,7 @@ services:
     build:
       context: .
       dockerfile: My.DDD.CQRS.Temp6.WorkService/Dockerfile
+    restart: always
     container_name: mydddcqrstemp6workservice
     depends_on:
     - my.ddd.cqrs.temp6.api

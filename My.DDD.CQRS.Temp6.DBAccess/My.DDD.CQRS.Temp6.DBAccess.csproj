@@ -15,4 +15,8 @@
     <ProjectReference Include="..\My.DDD.CQRS.Temp6.Domain\My.DDD.CQRS.Temp6.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>

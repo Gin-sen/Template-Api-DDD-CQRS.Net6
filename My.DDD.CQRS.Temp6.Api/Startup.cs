@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.ApiExplorer;
+﻿using Elastic.Apm.Api;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using My.DDD.CQRS.Temp6.DBAccess;
@@ -33,6 +34,8 @@ public class Startup
                 .LogTo(Console.WriteLine, LogLevel.Information)
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors());
+    services.AddDatabaseDeveloperPageExceptionFilter();
+
   }
 
   public void Configure(WebApplication app, IWebHostEnvironment environment)
