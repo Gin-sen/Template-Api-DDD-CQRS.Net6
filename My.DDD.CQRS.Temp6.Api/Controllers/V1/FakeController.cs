@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Todos;
-using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Users;
+using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Todos.Fake;
+using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Users.Fake;
 
 namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
 {
@@ -31,11 +31,32 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
     }
 
 
-    // GET: api/<FakeController>/{id}
+    // GET: api/<FakeController>/todos
+    [HttpGet("todos")]
+    public async Task<IActionResult> FakeAllTodos()
+    {
+      var res = await _mediator.Send(new FakeGetAllTodos());
+      if (res == null)
+        return NotFound();
+      return Ok(res);
+    }
+
+    // GET: api/<FakeController>/users/{id}
     [HttpGet("users/{id}")]
     public async Task<IActionResult> FakeGetByIdUser([FromRoute] int id)
     {
       var res = await _mediator.Send(new FakeGetByIdUser() { UserId = id });
+      if (res == null)
+        return NotFound();
+      return Ok(res);
+    }
+
+
+    // GET: api/<FakeController>/users
+    [HttpGet("users")]
+    public async Task<IActionResult> FakeAllUsers()
+    {
+      var res = await _mediator.Send(new FakeGetAllUsers());
       if (res == null)
         return NotFound();
       return Ok(res);

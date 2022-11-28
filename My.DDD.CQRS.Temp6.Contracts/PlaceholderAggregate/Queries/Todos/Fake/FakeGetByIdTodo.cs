@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Todos
+namespace My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Todos.Fake
 {
   public class FakeGetByIdTodo : IRequest<TodoResult?>
   {
