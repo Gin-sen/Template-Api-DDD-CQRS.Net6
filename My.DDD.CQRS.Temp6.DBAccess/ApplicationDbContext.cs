@@ -4,6 +4,7 @@ using My.DDD.CQRS.Temp6.Domain.PlaceholderAggregate.Users;
 
 namespace My.DDD.CQRS.Temp6.DBAccess
 {
+  // TODO:  voir https://learn.microsoft.com/en-us/dotnet/architecture/microservices/multi-container-microservice-net-applications/database-server-container
   public class ApplicationDbContext : DbContext
   {
 
