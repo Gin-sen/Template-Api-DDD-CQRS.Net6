@@ -1,4 +1,4 @@
-namespace My.DDD.CQRS.Temp6.Api
+namespace My.DDD.CQRS.Temp6.Domain.WeatherAggregate
 {
   public class WeatherForecast
   {
