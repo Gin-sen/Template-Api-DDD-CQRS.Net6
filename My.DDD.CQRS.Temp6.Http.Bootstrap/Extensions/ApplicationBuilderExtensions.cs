@@ -18,18 +18,6 @@ public static class ApplicationBuilderExtensions
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment() || app.Environment.EnvironmentName == "Docker")
     {
-      //app.UseSwagger(c => c.RouteTemplate = "/swagger/{documentname}/swagger.json");
-      //app.UseSwaggerUI(options =>
-      //{
-      //  if (provider != null)
-      //  {
-      //    foreach (var description in provider.ApiVersionDescriptions)
-      //    {
-      //      options.RoutePrefix = "swagger";
-      //      options.SwaggerEndpoint(SwaggerHelper.UrlEndpoint(description.GroupName), description.GroupName.ToUpperInvariant());
-      //    }
-      //  }
-      //});
       app.UseSwagger();
 
       app.UseSwaggerUI(o =>

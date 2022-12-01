@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   my.ddd.cqrs.temp6.api:
-    image: ${DOCKER_REGISTRY-}mydddcqrstemp6api
+    image: ${DOCKER_REGISTRY-ginsem/}mydddcqrstemp6api
     container_name: mydddcqrstemp6api
     depends_on:
     - local.azurite
@@ -14,7 +14,7 @@ services:
     - backend_net
 
   my.ddd.cqrs.temp6.workservice:
-    image: ${DOCKER_REGISTRY-}mydddcqrstemp6workservice
+    image: ${DOCKER_REGISTRY-ginsem/}mydddcqrstemp6workservice
     build:
       context: .
       dockerfile: My.DDD.CQRS.Temp6.WorkService/Dockerfile

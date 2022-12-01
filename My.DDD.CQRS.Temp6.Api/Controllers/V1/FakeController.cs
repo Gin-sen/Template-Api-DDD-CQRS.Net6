@@ -26,7 +26,7 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
     [HttpGet("todos/{id}")]
     public async Task<IActionResult> FakeGetByIdTodo([FromRoute] int id)
     {
-      var res = await _mediator.Send(new FakeGetByIdTodo() { TodoId = id });
+      var res = await _mediator.Send(new FakeGetByIdTodoQuery() { TodoId = id });
       if (res == null)
         return NotFound();
       return Ok(res);
@@ -37,7 +37,7 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
     [HttpGet("todos")]
     public async Task<IActionResult> FakeAllTodos()
     {
-      var res = await _mediator.Send(new FakeGetAllTodos());
+      var res = await _mediator.Send(new FakeGetAllTodosQuery());
       if (res == null)
         return NotFound();
       return Ok(res);
@@ -46,7 +46,7 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
 
     // POST: api/<FakeController>/todos
     [HttpPost("todos")]
-    public async Task<IActionResult> FakeCreateTodo([FromBody] FakeCreateTodo dto)
+    public async Task<IActionResult> FakeCreateTodo([FromBody] FakeCreateTodoCommand dto)
     {
       var res = await _mediator.Send(dto);
       if (!res)
@@ -60,7 +60,7 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
       [HttpGet("users/{id}")]
     public async Task<IActionResult> FakeGetByIdUser([FromRoute] int id)
     {
-      var res = await _mediator.Send(new FakeGetByIdUser() { UserId = id });
+      var res = await _mediator.Send(new FakeGetByIdUserQuery() { UserId = id });
       if (res == null)
         return NotFound();
       return Ok(res);
@@ -71,7 +71,7 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
     [HttpGet("users")]
     public async Task<IActionResult> FakeAllUsers()
     {
-      var res = await _mediator.Send(new FakeGetAllUsers());
+      var res = await _mediator.Send(new FakeGetAllUsersQuery());
       if (res == null)
         return NotFound();
       return Ok(res);
@@ -79,7 +79,7 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
 
     // POST: api/<FakeController>/todos
     [HttpPost("users")]
-    public async Task<IActionResult> FakeCreateUser([FromBody] FakeCreateUser dto)
+    public async Task<IActionResult> FakeCreateUser([FromBody] FakeCreateUserCommand dto)
     {
       var res = await _mediator.Send(dto);
       if (!res)

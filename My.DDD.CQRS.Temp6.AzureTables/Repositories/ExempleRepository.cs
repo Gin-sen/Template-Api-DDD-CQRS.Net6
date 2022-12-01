@@ -1,59 +1,50 @@
-﻿using My.DDD.CQRS.Temp6.AzureTables.Entities;
-using My.DDD.CQRS.Temp6.AzureTables.Tables;
-using My.DDD.CQRS.Temp6.Domain.ExempleAggregate;
+﻿using My.DDD.CQRS.Temp6.AzureStorage.Tables;
+using My.DDD.CQRS.Temp6.AzureTables.Entities;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace My.DDD.CQRS.Temp6.AzureTables.Repositories
 {
-  public class ExempleRepository : IExempleRepository
+  public class ExempleRepository : AzureTableContext<ExempleEntity>, IExempleRepository
   {
-    private readonly IExempleTable _exempleTable;
+    public ExempleRepository(string tableName, string storageConnectionString)
+      : base(tableName, storageConnectionString) { }
 
-    public ExempleRepository(IExempleTable exempleTable)
+
+    public async Task<ExempleEntity> GetExempleAsync(string exempleString1, string exempleString2)
     {
-      _exempleTable = exempleTable;
+      return await GetEntityAsync($"PartitionKey eq {exempleString1} and RowKey eq {exempleString2}");
     }
 
-    public async Task AddAsync(string exemple, CancellationToken cancellationToken)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="email"></param>
+    /// <param name="role"></param>
+    /// <returns></returns>
+    public async Task AddOrUpdateExempleAsync(string exempleString1, string exempleString2)
     {
-      await _exempleTable.AddOrUpdateExempleAsync(exemple, exemple);
-    }
-
-    public Task AddRangeAsync(IEnumerable<Exemple> entities, CancellationToken cancellationToken)
-    {
-      throw new NotImplementedException();
-    }
-
-    public async Task<IEnumerable<Exemple>> GetAllAsync(CancellationToken cancellationToken)
-    {
-      var resultRequest = await _exempleTable.GetAllAsync();
-      var length = resultRequest.Count();
-      var result = new List<Exemple>();
-      foreach (var element in resultRequest) {
-        result.Add(new Exemple(element.PartitionKey, element.RowKey, element.Increment, element.Timestamp));
+      ExempleEntity exemple = await GetExempleAsync(exempleString1, exempleString2);
+      if (exemple != null)
+      {
+        exemple.Increment++;
+        await InsertOrUpdateEntityAsync(exemple);
       }
-      return result.AsEnumerable();
+      else
+      {
+        exemple = new ExempleEntity(exempleString1, exempleString2);
+        await InsertEntityAsync(exemple);
+      }
+
     }
 
-    public async Task<Exemple> GetAsync(string exemple, CancellationToken cancellationToken)
+    public async Task<IEnumerable<ExempleEntity>> GetAllAsync()
     {
-      var result = await _exempleTable.GetExempleAsync(exemple, exemple);
-      return new Exemple(result.PartitionKey, result.RowKey, result.Increment, result.Timestamp);
-    }
-
-    public void Remove(Exemple entity)
-    {
-      throw new NotImplementedException();
-    }
-
-    public void RemoveRange(IEnumerable<Exemple> entities)
-    {
-      throw new NotImplementedException();
+      return await GetEntitiesAsync($"PartitionKey ne ''");
     }
   }
 }

@@ -1,0 +1,12 @@
+﻿apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: {{ include "my-ddd-cqrs-temp6-api-istio.fullname" . }}
+  labels:
+    {{- include "my-ddd-cqrs-temp6-api-istio.labels" . | nindent 4 }}
+spec:
+  host: {{ include "my-ddd-cqrs-temp6-api-istio.fullname" . }}
+  subsets:
+  - name: {{ include "my-ddd-cqrs-temp6-api-istio.fullname" . }}
+    labels:
+      version: {{ .Chart.AppVersion | quote }}

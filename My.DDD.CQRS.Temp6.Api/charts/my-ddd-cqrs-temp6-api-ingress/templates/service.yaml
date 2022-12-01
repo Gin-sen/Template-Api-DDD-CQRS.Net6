@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "my-ddd-cqrs-temp6-api-ingress.fullname" . }}
+  labels:
+    {{- include "my-ddd-cqrs-temp6-api-ingress.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "my-ddd-cqrs-temp6-api-ingress.selectorLabels" . | nindent 4 }}

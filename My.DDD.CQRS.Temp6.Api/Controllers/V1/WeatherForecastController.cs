@@ -22,7 +22,7 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
     [HttpGet(Name = "GetWeatherForecast")]
     public async Task<IActionResult> Get()
     {
-      var res = await _mediator.Send(new GetWeatherForecast());
+      var res = await _mediator.Send(new GetWeatherForecastQuery());
       if (res.Count() == 0)
         return NotFound();
       return Ok(res);
@@ -30,7 +30,7 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
 
 
     [HttpPost(Name = "WeatherWarning")]
-    public async Task<IActionResult> CreateWarning([FromBody] CreateWeatherWarning createWeatherWarning)
+    public async Task<IActionResult> CreateWarning([FromBody] CreateWeatherWarningNotification createWeatherWarning)
     {
       await _mediator.Publish(createWeatherWarning);
       return Ok();
@@ -38,7 +38,7 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
     [HttpGet("WeatherUpdates/{city}")]
     public IAsyncEnumerable<WeatherForecastResult> GetWeatherUpdates([FromRoute] string city, CancellationToken cancellationToken)
     {
-      var streamRequest = new GetWeatherUpdates() { City = city };
+      var streamRequest = new GetWeatherUpdatesStream() { City = city };
       return _mediator.CreateStream(streamRequest, cancellationToken);
     }
 

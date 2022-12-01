@@ -20,7 +20,7 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
 
     // POST: api/<ExempleController>
     [HttpPost]
-    public async Task<IActionResult> CreateOrIncrementExemple([FromBody] CreateOrIncrementExemple command)
+    public async Task<IActionResult> CreateOrIncrementExemple([FromBody] CreateOrIncrementExempleCommand command)
     {
       var res = await _mediator.Send(command);
 
@@ -31,7 +31,7 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
     [HttpGet]
     public async Task<IActionResult> ListAllExemple()
     {
-      var res = await _mediator.Send(new ListExemple());
+      var res = await _mediator.Send(new ListExempleQuery());
 
       return Ok(res);
     }
@@ -40,7 +40,7 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
     [HttpGet("{exempleString}")]
     public async Task<IActionResult> GetByIdExemple([FromRoute] string exempleString)
     {
-      var res = await _mediator.Send(new GetByIdExemple() { ExempleString = exempleString });
+      var res = await _mediator.Send(new GetByIdExempleQuery() { ExempleString = exempleString });
       if (res == null)
         return NotFound();
       return Ok(res);

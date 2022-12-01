@@ -6,7 +6,7 @@ namespace My.DDD.CQRS.Temp6.HttpClients
 {
   public static class DependencyInjection
   {
-    public static IServiceCollection AddHttpServices(this IServiceCollection services)
+    public static IServiceCollection AddHttpClientsLayer(this IServiceCollection services)
     {
 
       services.AddHttpClient<IPlaceholderClient, PlaceholderClient>(client =>

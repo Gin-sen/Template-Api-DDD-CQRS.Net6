@@ -23,7 +23,7 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
     [HttpGet("placeholderapi/{id}")]
     public async Task<IActionResult> GetByIdUser([FromRoute] int id)
     {
-      var res = await _mediator.Send(new GetByIdUser() { UserId = id });
+      var res = await _mediator.Send(new GetByIdUserQuery() { UserId = id });
       if (res == null)
         return NotFound();
       return Ok(res);
