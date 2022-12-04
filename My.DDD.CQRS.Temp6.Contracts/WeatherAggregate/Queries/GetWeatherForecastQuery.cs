@@ -2,7 +2,7 @@
 
 namespace My.DDD.CQRS.Temp6.Contracts.WeatherAggregate.Queries
 {
-    public class GetWeatherForecastQuery : IQuery<IEnumerable<WeatherForecastResult>>
-    {
-    }
+  public class GetWeatherForecastQuery : IQuery<IEnumerable<WeatherForecastResult>>
+  {
+  }
 }

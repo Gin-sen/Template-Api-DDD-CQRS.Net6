@@ -2,7 +2,7 @@
 
 namespace MY.DDD.CQRS.Temp6.CQRS.Events
 {
-    public interface IEvent : INotification
-    {
-    }
+  public interface IEvent : INotification
+  {
+  }
 }

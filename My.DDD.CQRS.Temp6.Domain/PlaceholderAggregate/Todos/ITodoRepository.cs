@@ -4,7 +4,7 @@ namespace My.DDD.CQRS.Temp6.Domain.PlaceholderAggregate.Todos
 {
   public interface ITodoRepository : IReadRepository<Todo>
   {
-        Task<int> AddTodo(Todo todo);
-        TodoAggregate GetTodoAggregate();
+    Task<int> AddTodo(Todo todo);
+    TodoAggregate GetTodoAggregate();
   }
 }

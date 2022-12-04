@@ -2,7 +2,7 @@
 
 namespace My.DDD.CQRS.Temp6.Contracts.ExempleAggregate.Queries
 {
-    public class ListExempleQuery : IQuery<IList<ExempleResult>>
-    {
-    }
+  public class ListExempleQuery : IQuery<IList<ExempleResult>>
+  {
+  }
 }

@@ -2,8 +2,8 @@
 
 namespace My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Todos
 {
-    public class GetByIdTodoQuery : IQuery<TodoResult?>
-    {
-        public int TodoId { get; set; }
-    }
+  public class GetByIdTodoQuery : IQuery<TodoResult?>
+  {
+    public int TodoId { get; set; }
+  }
 }

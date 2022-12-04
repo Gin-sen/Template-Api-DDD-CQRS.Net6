@@ -2,9 +2,9 @@
 
 namespace My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Users.Fake
 {
-    public class FakeGetByIdUserQuery : IQuery<UserResult?>
-    {
+  public class FakeGetByIdUserQuery : IQuery<UserResult?>
+  {
 
-        public int UserId { get; set; }
-    }
+    public int UserId { get; set; }
+  }
 }
