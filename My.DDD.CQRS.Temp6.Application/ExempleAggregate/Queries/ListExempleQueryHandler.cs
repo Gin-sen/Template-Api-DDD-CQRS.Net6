@@ -1,40 +1,34 @@
-﻿using MediatR;
-using My.DDD.CQRS.Temp6.Contracts.ExempleAggregate.Queries;
+﻿using My.DDD.CQRS.Temp6.Contracts.ExempleAggregate.Queries;
 using My.DDD.CQRS.Temp6.Domain.ExempleAggregate;
 using MY.DDD.CQRS.Temp6.CQRS.Queries;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace My.DDD.CQRS.Temp6.Application.ExempleAggregate.Queries
 {
-  public class ListExempleQueryHandler : IQueryHandler<ListExempleQuery, IList<ExempleResult>>
-  {
-    private readonly IExempleService _exempleRepository;
-
-    public ListExempleQueryHandler(IExempleService exempleRepository)
+    public class ListExempleQueryHandler : IQueryHandler<ListExempleQuery, IList<ExempleResult>>
     {
-      _exempleRepository = exempleRepository;
-    }
+        private readonly IExempleService _exempleRepository;
 
-    public async Task<IList<ExempleResult>> Handle(ListExempleQuery request, CancellationToken cancellationToken)
-    {
-      var result = await _exempleRepository.GetAllAsync(cancellationToken);
-      var finalResult = new List<ExempleResult>();
-      for (int i = 0; i < result.Count(); i++)
-      {
-        var element = result.ElementAt(i);
-        finalResult.Add(new ExempleResult()
+        public ListExempleQueryHandler(IExempleService exempleRepository)
         {
-          PartitionKey = element.PartitionKey,
-          RowKey = element.RowKey,
-          Increment = element.Increment,
-          TimeStamp = element.Timestamp
-        });
-      }
-      return finalResult;
+            _exempleRepository = exempleRepository;
+        }
+
+        public async Task<IList<ExempleResult>> Handle(ListExempleQuery request, CancellationToken cancellationToken)
+        {
+            var result = await _exempleRepository.GetAllAsync(cancellationToken);
+            var finalResult = new List<ExempleResult>();
+            for (int i = 0; i < result.Count(); i++)
+            {
+                var element = result.ElementAt(i);
+                finalResult.Add(new ExempleResult()
+                {
+                    PartitionKey = element.PartitionKey,
+                    RowKey = element.RowKey,
+                    Increment = element.Increment,
+                    TimeStamp = element.Timestamp
+                });
+            }
+            return finalResult;
+        }
     }
-  }
 }

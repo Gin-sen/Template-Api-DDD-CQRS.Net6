@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Hosting;
 using System.Timers;
 
 namespace My.DDD.CQRS.Temp6.WorkService.Services

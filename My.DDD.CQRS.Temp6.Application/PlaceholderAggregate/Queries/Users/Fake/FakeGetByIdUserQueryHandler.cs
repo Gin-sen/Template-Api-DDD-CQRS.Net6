@@ -1,14 +1,8 @@
-﻿using MediatR;
+﻿using Mapster;
 using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Users;
 using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Users.Fake;
 using My.DDD.CQRS.Temp6.DBAccess;
-using My.DDD.CQRS.Temp6.Domain.PlaceholderAggregate;
 using MY.DDD.CQRS.Temp6.CQRS.Queries;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace My.DDD.CQRS.Temp6.Application.PlaceholderAggregate.Queries.Users.Fake
 {
@@ -25,7 +19,7 @@ namespace My.DDD.CQRS.Temp6.Application.PlaceholderAggregate.Queries.Users.Fake
             var result = await _fakeDbContext.GetUser(request.UserId);
             if (result == null)
                 return null;
-            return new UserResult() { Id = result.Id, Name = result.Name, Email = result.Email, Username = result.Username, Phone = result.Phone, Website = result.Website };
+            return result.Adapt<UserResult>();
         }
     }
 }

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace My.DDD.CQRS.Temp6.Domain.SeedWork
+﻿namespace My.DDD.CQRS.Temp6.Domain.SeedWork
 {
   public abstract class AggregateRepository<TAggregateRoot>
-    where TAggregateRoot : class, IAggregateRoot
+                  where TAggregateRoot : class, IAggregateRoot
   {
     protected IUnitOfWork<TAggregateRoot> UnitOfWork { get; }
 

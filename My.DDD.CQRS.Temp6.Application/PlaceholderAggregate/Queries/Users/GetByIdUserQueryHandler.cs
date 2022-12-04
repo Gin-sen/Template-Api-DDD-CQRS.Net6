@@ -1,30 +1,30 @@
-﻿using MediatR;
+﻿using Mapster;
+using Microsoft.EntityFrameworkCore;
 using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Users;
-using My.DDD.CQRS.Temp6.Domain.PlaceholderAggregate;
+using My.DDD.CQRS.Temp6.Domain.PlaceholderAggregate.Users;
+using My.DDD.CQRS.Temp6.Domain.SeedWork;
 using MY.DDD.CQRS.Temp6.CQRS.Queries;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace My.DDD.CQRS.Temp6.Application.PlaceholderAggregate.Queries.Users
 {
-  public class GetByIdUserQueryHandler : IQueryHandler<GetByIdUserQuery, UserResult?>
-  {
-    private readonly IPlaceholderClient _placeholderClient;
-
-    public GetByIdUserQueryHandler(IPlaceholderClient placeholderClient)
+    public class GetByIdUserQueryHandler : IQueryHandler<GetByIdUserQuery, UserResult?>
     {
-      _placeholderClient = placeholderClient;
-    }
+        private readonly IReadRepository<User> _userRepository;
 
-    public async Task<UserResult?> Handle(GetByIdUserQuery request, CancellationToken cancellationToken)
-    {
-      var result = await _placeholderClient.GetUser(request.UserId);
-      if (result == null)
-        return null;
-      return new UserResult() { Id = result.Id, Name = result.Name, Email = result.Email, Username = result.Username, Phone = result.Phone, Website = result.Website };
+        public GetByIdUserQueryHandler(IReadRepository<User> userRepository)
+        {
+            _userRepository = userRepository;
+        }
+
+        public async Task<UserResult?> Handle(GetByIdUserQuery request, CancellationToken cancellationToken)
+        {
+            var result = await _userRepository.GetAll().FirstOrDefaultAsync(user => user.Id == request.UserId, cancellationToken);
+
+            if (Entity.Equals(result, null))
+                return null;
+
+            UserResult userResult = result.Adapt<UserResult>();
+            return userResult;
+        }
     }
-  }
 }

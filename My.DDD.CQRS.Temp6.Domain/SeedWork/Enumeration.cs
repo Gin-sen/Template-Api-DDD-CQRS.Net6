@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 
 namespace My.DDD.CQRS.Temp6.Domain.SeedWork
 {
 
   public abstract class Enumeration<TId> : IComparable<TId>
-    where TId : notnull
+                  where TId : notnull
   {
     public string Name { get; private set; }
 

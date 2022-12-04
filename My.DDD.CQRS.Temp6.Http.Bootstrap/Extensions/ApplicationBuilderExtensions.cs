@@ -2,9 +2,6 @@
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using My.DDD.CQRS.Temp6.DBAccess;
-using My.DDD.CQRS.Temp6.DBAccess.Seeds;
-using My.DDD.CQRS.Temp6.Http.Bootstrap.Helpers;
 
 namespace My.DDD.CQRS.Temp6.Http.Bootstrap.Extensions;
 
@@ -44,15 +41,7 @@ public static class ApplicationBuilderExtensions
     }
 
 
-    using (var scope = app.Services.CreateScope())
-    {
-      var services = scope.ServiceProvider;
 
-      var context = services.GetRequiredService<ApplicationDbContext>();
-      context.Database.EnsureCreated();
-      UserTableInitializer.Initialize(context);
-      TodoTableInitializer.Initialize(context);
-    }
 
 
 

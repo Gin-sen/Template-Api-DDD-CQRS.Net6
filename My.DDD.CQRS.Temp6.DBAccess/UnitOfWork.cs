@@ -1,50 +1,49 @@
-﻿using My.DDD.CQRS.Temp6.DBAccess.Repositories;
-using My.DDD.CQRS.Temp6.Domain.PlaceholderAggregate.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using My.DDD.CQRS.Temp6.Domain.SeedWork;
 
 namespace My.DDD.CQRS.Temp6.DBAccess
 {
-  public class UnitOfWork : IDisposable
-  {
-    private ApplicationDbContext context;
 
-    public UnitOfWork(ApplicationDbContext context)
+    public class UnitOfWork<TDbContext, TAggregateRoot> : IUnitOfWork<TAggregateRoot>
+                            where TDbContext : DbContext
+                            where TAggregateRoot : IAggregateRoot
     {
-      this.context = context;
-    }
+        protected TDbContext DbContext { get; }
 
-    private GenericApplicationDbRepository<User> userRepository;
-    public GenericApplicationDbRepository<User> UserRepository
-    {
-      get
-      {
-        return this.userRepository ?? new GenericApplicationDbRepository<User>(context);
-      }
-    }
-    public void Save()
-    {
-      context.SaveChanges();
-    }
-    private bool disposed = false;
-    protected virtual void Dispose(bool disposing)
-    {
-      if (!this.disposed)
-      {
-        if (disposing)
+        public UnitOfWork(TDbContext dbContext)
         {
-          context.Dispose();
+            DbContext = dbContext;
         }
-      }
-      this.disposed = true;
+
+        public async Task AddAsync(TAggregateRoot aggregateRoot, CancellationToken cancellationToken = default)
+        {
+            await DbContext.AddAsync(aggregateRoot, cancellationToken);
+        }
+
+        public async Task AddRangeAsync(IEnumerable<TAggregateRoot> aggregateRoots, CancellationToken cancellationToken = default)
+        {
+            await DbContext.AddRangeAsync(aggregateRoots, cancellationToken);
+        }
+
+        public Task RemoveAsync<TEntity>(TEntity entity, CancellationToken cancellationToken = default)
+          where TEntity : IEntityBase
+        {
+            DbContext.Remove(entity);
+
+            return Task.CompletedTask;
+        }
+
+        public Task RemoveRangeAsync<TEntity>(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
+          where TEntity : IEntityBase
+        {
+            DbContext.RemoveRange(entities);
+
+            return Task.CompletedTask;
+        }
+
+        public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            await DbContext.SaveChangesAsync(cancellationToken);
+        }
     }
-    public void Dispose()
-    {
-      Dispose(true);
-      GC.SuppressFinalize(this);
-    }
-  }
 }

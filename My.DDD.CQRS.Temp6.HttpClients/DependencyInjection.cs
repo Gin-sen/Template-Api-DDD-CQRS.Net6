@@ -4,17 +4,17 @@ using My.DDD.CQRS.Temp6.HttpClients.Clients;
 
 namespace My.DDD.CQRS.Temp6.HttpClients
 {
-  public static class DependencyInjection
-  {
-    public static IServiceCollection AddHttpClientsLayer(this IServiceCollection services)
+    public static class DependencyInjection
     {
+        public static IServiceCollection AddHttpClientsLayer(this IServiceCollection services)
+        {
 
-      services.AddHttpClient<IPlaceholderClient, PlaceholderClient>(client =>
-      {
-        client.BaseAddress = new("https://jsonplaceholder.typicode.com");
-      });
+            services.AddHttpClient<IPlaceholderClient, PlaceholderClient>(client =>
+            {
+                client.BaseAddress = new("https://jsonplaceholder.typicode.com");
+            });
 
-      return services;
-    } 
-  }
+            return services;
+        }
+    }
 }

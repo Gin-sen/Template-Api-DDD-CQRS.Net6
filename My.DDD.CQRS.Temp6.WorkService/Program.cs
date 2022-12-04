@@ -2,22 +2,22 @@ using My.DDD.CQRS.Temp6.WorkService.Services;
 
 namespace My.DDD.CQRS.Temp6.WorkService
 {
-  public class Program
-  {
-    public static void Main(string[] args)
+    public class Program
     {
-      using IHost host = Host.CreateDefaultBuilder(args)
-        .ConfigureServices(services =>
+        public static void Main(string[] args)
         {
-          // Timer implementation
-          services.AddHostedService<TimerService>();
+            using IHost host = Host.CreateDefaultBuilder(args)
+              .ConfigureServices(services =>
+              {
+                  // Timer implementation
+                  services.AddHostedService<TimerService>();
 
-          // Then Default BackgroundService
-          //services.AddHostedService<Worker>();
-        })
-        .Build();
+                  // Then Default BackgroundService
+                  //services.AddHostedService<Worker>();
+              })
+              .Build();
 
-      host.Run();
+            host.Run();
+        }
     }
-  }
 }

@@ -1,15 +1,10 @@
 ﻿using My.DDD.CQRS.Temp6.Domain.PlaceholderAggregate.Users;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
+using My.DDD.CQRS.Temp6.Domain.SeedWork;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace My.DDD.CQRS.Temp6.Domain.PlaceholderAggregate.Todos
 {
-  public class Todo
+  public class Todo : Entity
   {
 
     [JsonPropertyName("userId")]

@@ -1,19 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using My.DDD.CQRS.Temp6.Application;
+using My.DDD.CQRS.Temp6.AzureTables;
+using My.DDD.CQRS.Temp6.Contracts;
 using My.DDD.CQRS.Temp6.Http.Bootstrap.Helpers;
+using My.DDD.CQRS.Temp6.HttpClients;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
-using MediatR;
-using My.DDD.CQRS.Temp6.Application;
-using My.DDD.CQRS.Temp6.Contracts;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using My.DDD.CQRS.Temp6.Domain.ExempleAggregate;
-using My.DDD.CQRS.Temp6.AzureTables.Services;
-using My.DDD.CQRS.Temp6.AzureTables;
-using My.DDD.CQRS.Temp6.HttpClients;
 
 namespace My.DDD.CQRS.Temp6.Http.Bootstrap.Extensions;
 

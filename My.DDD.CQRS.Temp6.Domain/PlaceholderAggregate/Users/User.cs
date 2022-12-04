@@ -1,16 +1,10 @@
 ﻿using My.DDD.CQRS.Temp6.Domain.PlaceholderAggregate.Todos;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Net;
-using System.Text;
+using My.DDD.CQRS.Temp6.Domain.SeedWork;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace My.DDD.CQRS.Temp6.Domain.PlaceholderAggregate.Users
 {
-  public class User
+  public class User : Entity
   {
     [JsonPropertyName("id")]
     public int Id { get; set; }
