@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Commands.Users;
 using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Users;
 
 namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
@@ -37,6 +38,14 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
             if (res == null)
                 return NotFound();
             return Ok(res);
-        }
     }
+
+    // POST: api/<ExempleController>/
+    [HttpPost]
+    public async Task<IActionResult> CreateUser([FromBody] CreateUserCommand dto)
+    {
+      int id = await _mediator.Send(dto);
+      return Created($"/api/User/{id}", dto);
+    }
+  }
 }

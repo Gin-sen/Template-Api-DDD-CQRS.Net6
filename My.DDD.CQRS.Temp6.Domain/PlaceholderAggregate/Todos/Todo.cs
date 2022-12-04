@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace My.DDD.CQRS.Temp6.Domain.PlaceholderAggregate.Todos
 {
-  public class Todo : Entity
+  public class Todo : Entity, IAggregateRoot
   {
 
     [JsonPropertyName("userId")]
