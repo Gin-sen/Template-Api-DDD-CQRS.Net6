@@ -2,6 +2,7 @@
 using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Commands.Todos.Fake;
 using My.DDD.CQRS.Temp6.DBAccess;
 using My.DDD.CQRS.Temp6.Domain.PlaceholderAggregate.Todos;
+using MY.DDD.CQRS.Temp6.CQRS.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace My.DDD.CQRS.Temp6.Application.PlaceholderAggregate.Commands.Todos.Fake
 {
-  public class FakeCreateTodoCommandHandler : IRequestHandler<FakeCreateTodoCommand, bool>
+  public class FakeCreateTodoCommandHandler : ICommandHandler<FakeCreateTodoCommand, bool>
   {
     private readonly FakeBdContext _fakeDbContext;
 

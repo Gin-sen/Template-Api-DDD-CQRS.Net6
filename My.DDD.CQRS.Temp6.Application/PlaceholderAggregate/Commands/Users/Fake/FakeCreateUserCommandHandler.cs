@@ -3,6 +3,7 @@ using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Commands.Users.Fake;
 using My.DDD.CQRS.Temp6.DBAccess;
 using My.DDD.CQRS.Temp6.Domain.PlaceholderAggregate.Todos;
 using My.DDD.CQRS.Temp6.Domain.PlaceholderAggregate.Users;
+using MY.DDD.CQRS.Temp6.CQRS.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace My.DDD.CQRS.Temp6.Application.PlaceholderAggregate.Commands.Users.Fake
 {
-  public class FakeCreateUserCommandHandler : IRequestHandler<FakeCreateUserCommand, bool>
+  public class FakeCreateUserCommandHandler : ICommandHandler<FakeCreateUserCommand, bool>
   {
     private readonly FakeBdContext _fakeDbContext;
 

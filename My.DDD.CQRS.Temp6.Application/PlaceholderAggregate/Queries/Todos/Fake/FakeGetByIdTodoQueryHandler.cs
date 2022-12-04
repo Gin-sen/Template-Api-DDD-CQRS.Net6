@@ -2,6 +2,7 @@
 using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Todos;
 using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Todos.Fake;
 using My.DDD.CQRS.Temp6.DBAccess;
+using MY.DDD.CQRS.Temp6.CQRS.Queries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace My.DDD.CQRS.Temp6.Application.PlaceholderAggregate.Queries.Todos.Fake
 {
-    public class FakeGetByIdTodoQueryHandler : IRequestHandler<FakeGetByIdTodoQuery, TodoResult?>
+    public class FakeGetByIdTodoQueryHandler : IQueryHandler<FakeGetByIdTodoQuery, TodoResult?>
     {
         private readonly FakeBdContext _fakeDbContext;
         public FakeGetByIdTodoQueryHandler(FakeBdContext fakeDbContext)

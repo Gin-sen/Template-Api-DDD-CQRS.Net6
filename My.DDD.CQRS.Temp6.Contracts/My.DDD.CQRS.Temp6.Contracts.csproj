@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MY.DDD.CQRS.Temp6.CQRS\MY.DDD.CQRS.Temp6.CQRS.csproj" />
     <ProjectReference Include="..\My.DDD.CQRS.Temp6.Domain\My.DDD.CQRS.Temp6.Domain.csproj" />
   </ItemGroup>
 

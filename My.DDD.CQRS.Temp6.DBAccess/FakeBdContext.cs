@@ -10,8 +10,8 @@ namespace My.DDD.CQRS.Temp6.DBAccess
 {
   public class FakeBdContext
   {
-    private static List<User> _users;
-    private static List<Todo> _todos;
+    private static List<User> _users { get; set; }
+    private static List<Todo> _todos { get; set; }
 
     public FakeBdContext()
     {

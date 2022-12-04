@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using My.DDD.CQRS.Temp6.Contracts.ExempleAggregate.Commands;
 using My.DDD.CQRS.Temp6.Domain.ExempleAggregate;
+using MY.DDD.CQRS.Temp6.CQRS.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace My.DDD.CQRS.Temp6.Application.ExempleAggregate.Commands
 {
   public class CreateOrIncrementExempleCommandHandler :
-    IRequestHandler<CreateOrIncrementExempleCommand, CreateOrIncrementResult>
+    ICommandHandler<CreateOrIncrementExempleCommand, CreateOrIncrementResult>
   {
     private readonly IExempleService _exempleRepository;
 

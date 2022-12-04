@@ -8,7 +8,7 @@ using Http = System.Net.Http;
 
 namespace My.DDD.CQRS.Temp6.HttpClients.Clients
 {
-    public class PlaceholderClient : IPlaceholderClient
+  public class PlaceholderClient : IPlaceholderClient
   {
     private const string ApiKey = "hello";
 

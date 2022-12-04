@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using My.DDD.CQRS.Temp6.DBAccess;
 using My.DDD.CQRS.Temp6.Contracts.ExempleAggregate.Queries;
+using MY.DDD.CQRS.Temp6.CQRS.Queries;
 
 namespace My.DDD.CQRS.Temp6.Application.PlaceholderAggregate.Queries.Todos.Fake
 {
-  public class FakeGetAllTodosQueryHandler : IRequestHandler<FakeGetAllTodosQuery, IEnumerable<TodoResult>>
+  public class FakeGetAllTodosQueryHandler : IQueryHandler<FakeGetAllTodosQuery, IEnumerable<TodoResult>>
   {
     private readonly FakeBdContext _fakeDbContext;
     public FakeGetAllTodosQueryHandler(FakeBdContext fakeDbContext)

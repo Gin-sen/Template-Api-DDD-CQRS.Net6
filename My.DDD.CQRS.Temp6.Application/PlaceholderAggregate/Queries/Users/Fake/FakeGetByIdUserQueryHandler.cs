@@ -3,6 +3,7 @@ using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Users;
 using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Users.Fake;
 using My.DDD.CQRS.Temp6.DBAccess;
 using My.DDD.CQRS.Temp6.Domain.PlaceholderAggregate;
+using MY.DDD.CQRS.Temp6.CQRS.Queries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace My.DDD.CQRS.Temp6.Application.PlaceholderAggregate.Queries.Users.Fake
 {
-    public class FakeGetByIdUserQueryHandler : IRequestHandler<FakeGetByIdUserQuery, UserResult?>
+    public class FakeGetByIdUserQueryHandler : IQueryHandler<FakeGetByIdUserQuery, UserResult?>
     {
         private readonly FakeBdContext _fakeDbContext;
         public FakeGetByIdUserQueryHandler(FakeBdContext fakeDbContext)

@@ -43,13 +43,19 @@ services:
   local.mariadb:
     image: mariadb:10.5
     container_name: localmariadb
-    hostname: localmariadb
     restart: always
     command:
     - "--port"
     - "3308"
     networks:
     - backend_net
+    
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    depends_on:
+    - local.mariadb
 
 
 networks:

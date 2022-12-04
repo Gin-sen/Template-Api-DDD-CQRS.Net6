@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using My.DDD.CQRS.Temp6.Domain.PlaceholderAggregate.Users;
+using MY.DDD.CQRS.Temp6.CQRS.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Commands.Users.Fake
 {
-  public class FakeCreateUserCommand : IRequest<bool>
+  public class FakeCreateUserCommand : ICommand<bool>
   {
 
     [JsonPropertyName("id")]

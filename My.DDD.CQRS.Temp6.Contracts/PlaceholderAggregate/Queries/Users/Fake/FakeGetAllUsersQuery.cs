@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using MY.DDD.CQRS.Temp6.CQRS.Queries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Users.Fake
 {
-  public class FakeGetAllUsersQuery : IRequest<IEnumerable<UserResult>>
+  public class FakeGetAllUsersQuery : IQuery<IEnumerable<UserResult>>
   {
   }
 }
