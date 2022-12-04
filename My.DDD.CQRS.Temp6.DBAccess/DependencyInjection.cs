@@ -28,8 +28,9 @@ namespace My.DDD.CQRS.Temp6.DBAccess
                         .EnableSensitiveDataLogging()
                         .EnableDetailedErrors());
 
-            services.TryAddScoped<IReadRepository<User>, UserRepository>();
-            services.TryAddScoped<IReadRepository<Todo>, TodoRepository>();
+            services.TryAddScoped<IUserRepository, UserRepository>();
+            services.TryAddScoped<ITodoRepository, TodoRepository>();
+            //services.TryAddScoped<IReadRepository<Todo>, TodoRepository>();
             services.TryAddScoped<IUnitOfWork<UserAggregate>, UnitOfWork<ApplicationDbContext, UserAggregate>>();
             services.TryAddScoped<IUnitOfWork<TodoAggregate>, UnitOfWork<ApplicationDbContext, TodoAggregate>>();
 

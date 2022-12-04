@@ -4,27 +4,27 @@ using MY.DDD.CQRS.Temp6.CQRS.Queries;
 
 namespace My.DDD.CQRS.Temp6.Application.ExempleAggregate.Queries
 {
-    public class GetByIdExempleQueryHandler : IQueryHandler<GetByIdExempleQuery, ExempleResult?>
+  public class GetByIdExempleQueryHandler : IQueryHandler<GetByIdExempleQuery, ExempleResult?>
+  {
+    private readonly IExempleService _exempleRepository;
+
+    public GetByIdExempleQueryHandler(IExempleService exempleRepository)
     {
-        private readonly IExempleService _exempleRepository;
-
-        public GetByIdExempleQueryHandler(IExempleService exempleRepository)
-        {
-            _exempleRepository = exempleRepository;
-        }
-
-        public async Task<ExempleResult?> Handle(GetByIdExempleQuery request, CancellationToken cancellationToken)
-        {
-            var result = await _exempleRepository.GetAsync(request.ExempleString, cancellationToken);
-            if (result == null)
-                return null;
-            return new ExempleResult()
-            {
-                PartitionKey = result.PartitionKey,
-                RowKey = result.RowKey,
-                Increment = result.Increment,
-                TimeStamp = result.Timestamp
-            };
-        }
+      _exempleRepository = exempleRepository;
     }
+
+    public async Task<ExempleResult?> Handle(GetByIdExempleQuery request, CancellationToken cancellationToken)
+    {
+      var result = await _exempleRepository.GetAsync(request.ExempleString, cancellationToken);
+      if (result == null)
+        return null;
+      return new ExempleResult()
+      {
+        PartitionKey = result.PartitionKey,
+        RowKey = result.RowKey,
+        Increment = result.Increment,
+        TimeStamp = result.Timestamp
+      };
+    }
+  }
 }
