@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Commands.Users;
 using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Users;
+using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Users.PlaceholderApi;
 
 namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
 {
@@ -19,7 +20,7 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
     }
 
 
-    // GET: api/<ExempleController>/{id}
+    // GET: api/<ExempleController>/placeholderapi/{id}
     [HttpGet("placeholderapi/{id}")]
     public async Task<IActionResult> GetByIdPlaceholderApiUser([FromRoute] int id)
     {
@@ -29,6 +30,14 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
       return Ok(res);
     }
 
+
+    // GET: api/<ExempleController>/
+    [HttpGet]
+    public async Task<IActionResult> GetAllUsers()
+    {
+      var res = await _mediator.Send(new GetAllUsersQuery());
+      return Ok(res);
+    }
 
     // GET: api/<ExempleController>/{id}
     [HttpGet("{id}")]

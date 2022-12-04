@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Commands.Todos;
 using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Todos;
+using My.DDD.CQRS.Temp6.Contracts.PlaceholderAggregate.Queries.Todos.PlaceholderApi;
 
 namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
 {
@@ -18,13 +19,20 @@ namespace My.DDD.CQRS.Temp6.Api.Controllers.V1
     }
 
 
-    // GET: api/<ExempleController>/{id}
+    // GET: api/<ExempleController>/placeholderapi/{id}
     [HttpGet("placeholderapi/{id}")]
     public async Task<IActionResult> GetByIdPlaceholderApiTodo([FromRoute] int id)
     {
       var res = await _mediator.Send(new GetByIdTodoPlaceholderApiQuery() { TodoId = id });
       if (res == null)
         return NotFound();
+      return Ok(res);
+    }
+    // GET: api/<ExempleController>/
+    [HttpGet]
+    public async Task<IActionResult> GetAllTodos()
+    {
+      var res = await _mediator.Send(new GetAllTodosQuery());
       return Ok(res);
     }
 

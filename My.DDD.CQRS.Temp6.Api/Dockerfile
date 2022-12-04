@@ -10,6 +10,7 @@ WORKDIR /src
 COPY ["My.DDD.CQRS.Temp6.Api/My.DDD.CQRS.Temp6.Api.csproj", "My.DDD.CQRS.Temp6.Api/"]
 COPY ["My.DDD.CQRS.Temp6.Application/My.DDD.CQRS.Temp6.Application.csproj", "My.DDD.CQRS.Temp6.Application/"]
 COPY ["My.DDD.CQRS.Temp6.Contracts/My.DDD.CQRS.Temp6.Contracts.csproj", "My.DDD.CQRS.Temp6.Contracts/"]
+COPY ["MY.DDD.CQRS.Temp6.CQRS/MY.DDD.CQRS.Temp6.CQRS.csproj", "MY.DDD.CQRS.Temp6.CQRS/"]
 COPY ["My.DDD.CQRS.Temp6.Domain/My.DDD.CQRS.Temp6.Domain.csproj", "My.DDD.CQRS.Temp6.Domain/"]
 COPY ["My.DDD.CQRS.Temp6.DBAccess/My.DDD.CQRS.Temp6.DBAccess.csproj", "My.DDD.CQRS.Temp6.DBAccess/"]
 COPY ["My.DDD.CQRS.Temp6.Http.Bootstrap/My.DDD.CQRS.Temp6.Http.Bootstrap.csproj", "My.DDD.CQRS.Temp6.Http.Bootstrap/"]
