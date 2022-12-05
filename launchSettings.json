@@ -1,0 +1,72 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "my.ddd.cqrs.temp6.api",
+      "serviceActions": {
+        "local.azurite": "StartWithoutDebugging",
+        "local.mariadb": "StartWithoutDebugging",
+        "my.ddd.cqrs.temp6.api": "StartDebugging",
+        "my.ddd.cqrs.temp6.workservice": "DoNotStart",
+        "phpmyadmin": "StartWithoutDebugging",
+        "elasticsearch": "DoNotStart",
+        "filebeat": "DoNotStart",
+        "kibana": "DoNotStart",
+        "logstash": "DoNotStart",
+        "setup": "DoNotStart"
+      }
+    },
+    "With ELK": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "my.ddd.cqrs.temp6.api",
+      "serviceActions": {
+        "elasticsearch": "StartWithoutDebugging",
+        "filebeat": "StartWithoutDebugging",
+        "kibana": "StartWithoutDebugging",
+        "local.azurite": "StartWithoutDebugging",
+        "local.mariadb": "StartWithoutDebugging",
+        "logstash": "StartWithoutDebugging",
+        "my.ddd.cqrs.temp6.api": "StartDebugging",
+        "my.ddd.cqrs.temp6.workservice": "DoNotStart",
+        "phpmyadmin": "StartWithoutDebugging",
+        "setup": "DoNotStart"
+      }
+    },
+    "Setup ELK": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "elasticsearch": "StartWithoutDebugging",
+        "filebeat": "StartWithoutDebugging",
+        "kibana": "StartWithoutDebugging",
+        "local.azurite": "DoNotStart",
+        "local.mariadb": "DoNotStart",
+        "logstash": "StartWithoutDebugging",
+        "my.ddd.cqrs.temp6.api": "DoNotStart",
+        "my.ddd.cqrs.temp6.workservice": "DoNotStart",
+        "phpmyadmin": "DoNotStart",
+        "setup": "StartWithoutDebugging"
+      }
+    },
+    "Reboot ELK": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "elasticsearch": "StartWithoutDebugging",
+        "filebeat": "StartWithoutDebugging",
+        "kibana": "StartWithoutDebugging",
+        "local.azurite": "DoNotStart",
+        "local.mariadb": "DoNotStart",
+        "logstash": "StartWithoutDebugging",
+        "my.ddd.cqrs.temp6.api": "DoNotStart",
+        "my.ddd.cqrs.temp6.workservice": "DoNotStart",
+        "phpmyadmin": "DoNotStart",
+        "setup": "DoNotStart"
+      }
+    }
+  }
+}

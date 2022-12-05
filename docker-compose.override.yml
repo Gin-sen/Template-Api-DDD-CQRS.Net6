@@ -38,7 +38,7 @@ services:
       - MYSQL_USER=user
       - MYSQL_PASSWORD=password
     volumes:
-    - dbvolume:/var/lib/mysql
+      - dbvolume:/var/lib/mysql
 
     
   phpmyadmin:
@@ -47,5 +47,75 @@ services:
     environment:
       - PMA_ARBITRARY=1
 
+  setup:
+    volumes:
+      - ./elk-conf/setup/entrypoint.sh:/entrypoint.sh:ro,Z
+      - ./elk-conf/setup/helpers.sh:/helpers.sh:ro,Z
+      - ./elk-conf/setup/roles:/roles:ro,Z
+      - setup:/state:Z
+    environment:
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD-}
+      LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD-}
+      KIBANA_SYSTEM_PASSWORD: ${KIBANA_SYSTEM_PASSWORD-}
+      METRICBEAT_INTERNAL_PASSWORD: ${METRICBEAT_INTERNAL_PASSWORD-}
+      FILEBEAT_INTERNAL_PASSWORD: ${FILEBEAT_INTERNAL_PASSWORD-}
+      HEARTBEAT_INTERNAL_PASSWORD: ${HEARTBEAT_INTERNAL_PASSWORD-}
+      MONITORING_INTERNAL_PASSWORD: ${MONITORING_INTERNAL_PASSWORD-}
+      BEATS_SYSTEM_PASSWORD: ${BEATS_SYSTEM_PASSWORD-}
+
+  elasticsearch:
+    volumes:
+      - ./elk-conf/elastic/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro,Z
+      - elasticsearch:/usr/share/elasticsearch/data:Z
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      node.name: elasticsearch
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD-}
+      discovery.type: single-node
+
+  logstash:
+    volumes:
+      - ./elk-conf/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
+      - ./elk-conf/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro,Z
+    ports:
+      - 5044:5044
+      - 50000:50000/tcp
+      - 50000:50000/udp
+      - 9600:9600
+    environment:
+      LS_JAVA_OPTS: -Xms256m -Xmx256m
+      LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD-}
+
+  kibana:
+    volumes:
+      - ./elk-conf/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml:ro,Z
+    ports:
+      - 5601:5601
+    environment:
+      KIBANA_SYSTEM_PASSWORD: ${KIBANA_SYSTEM_PASSWORD-}
+      NODE_OPTIONS: --max_old_space_size=4096
+  
+  filebeat:
+    user: root
+    volumes:
+      - ./elk-conf/filebeat/filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro,Z
+      - type: bind
+        source: /var/lib/docker/containers
+        target: /var/lib/docker/containers
+        read_only: true
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+        read_only: true
+    environment:
+      FILEBEAT_INTERNAL_PASSWORD: ${FILEBEAT_INTERNAL_PASSWORD-}
+      BEATS_SYSTEM_PASSWORD: ${BEATS_SYSTEM_PASSWORD-}
+
+
 volumes:
   dbvolume:
+  setup:
+  elasticsearch:
