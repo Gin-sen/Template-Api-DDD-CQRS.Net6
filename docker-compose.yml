@@ -114,5 +114,50 @@ services:
     depends_on:
       - elasticsearch
 
+  metricbeat:
+    image: docker.elastic.co/beats/metricbeat:8.5.2
+    container_name: metricbeat
+    env_file:
+    - .env
+    user: root
+    command:
+      - -e
+      - --strict.perms=false
+      - --system.hostfs=/hostfs
+    networks:
+      - backend_net
+    depends_on:
+      - kibana
+      - elasticsearch
+
+  fleet-server:
+    image: docker.elastic.co/beats/elastic-agent:8.5.2
+    container_name: fleet-server
+    #hostname: fleet-server
+    # Elastic Agent does not retry failed connections to Kibana upon the initial enrollment phase.
+    restart: on-failure
+    env_file:
+    - .env
+    networks:
+      - backend_net
+    depends_on:
+      - elasticsearch
+      - kibana
+
+
+  apm-server:
+    image: docker.elastic.co/beats/elastic-agent:8.5.2
+    container_name: apm-server
+    #hostname: apm-server
+    # Elastic Agent does not retry failed connections to Kibana upon the initial enrollment phase.
+    restart: on-failure
+    env_file:
+    - .env
+    networks:
+      - backend_net
+    depends_on:
+      - elasticsearch
+      - kibana
+      - fleet-server
 networks:
   backend_net:

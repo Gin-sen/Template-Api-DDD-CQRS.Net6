@@ -5,6 +5,7 @@
       "commandVersion": "1.0",
       "composeLaunchAction": "LaunchBrowser",
       "composeLaunchServiceName": "my.ddd.cqrs.temp6.api",
+      "composeLaunchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
       "serviceActions": {
         "local.azurite": "StartWithoutDebugging",
         "local.mariadb": "StartWithoutDebugging",
@@ -15,7 +16,10 @@
         "filebeat": "DoNotStart",
         "kibana": "DoNotStart",
         "logstash": "DoNotStart",
-        "setup": "DoNotStart"
+        "setup": "DoNotStart",
+        "metricbeat": "DoNotStart",
+        "apm-server": "DoNotStart",
+        "fleet-server": "DoNotStart"
       }
     },
     "With ELK": {
@@ -23,6 +27,7 @@
       "commandVersion": "1.0",
       "composeLaunchAction": "LaunchBrowser",
       "composeLaunchServiceName": "my.ddd.cqrs.temp6.api",
+      "composeLaunchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
       "serviceActions": {
         "elasticsearch": "StartWithoutDebugging",
         "filebeat": "StartWithoutDebugging",
@@ -33,7 +38,10 @@
         "my.ddd.cqrs.temp6.api": "StartDebugging",
         "my.ddd.cqrs.temp6.workservice": "DoNotStart",
         "phpmyadmin": "StartWithoutDebugging",
-        "setup": "DoNotStart"
+        "setup": "DoNotStart",
+        "metricbeat": "StartWithoutDebugging",
+        "apm-server": "StartWithoutDebugging",
+        "fleet-server": "StartWithoutDebugging"
       }
     },
     "Setup ELK": {
@@ -41,15 +49,18 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "elasticsearch": "StartWithoutDebugging",
-        "filebeat": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging",
+        "filebeat": "DoNotStart",
+        "kibana": "DoNotStart",
         "local.azurite": "DoNotStart",
         "local.mariadb": "DoNotStart",
-        "logstash": "StartWithoutDebugging",
+        "logstash": "DoNotStart",
         "my.ddd.cqrs.temp6.api": "DoNotStart",
         "my.ddd.cqrs.temp6.workservice": "DoNotStart",
         "phpmyadmin": "DoNotStart",
-        "setup": "StartWithoutDebugging"
+        "setup": "StartWithoutDebugging",
+        "metricbeat": "DoNotStart",
+        "apm-server": "DoNotStart",
+        "fleet-server": "DoNotStart"
       }
     },
     "Reboot ELK": {
@@ -65,7 +76,10 @@
         "my.ddd.cqrs.temp6.api": "DoNotStart",
         "my.ddd.cqrs.temp6.workservice": "DoNotStart",
         "phpmyadmin": "DoNotStart",
-        "setup": "DoNotStart"
+        "setup": "DoNotStart",
+        "metricbeat": "StartWithoutDebugging",
+        "apm-server": "StartWithoutDebugging",
+        "fleet-server": "StartWithoutDebugging"
       }
     }
   }

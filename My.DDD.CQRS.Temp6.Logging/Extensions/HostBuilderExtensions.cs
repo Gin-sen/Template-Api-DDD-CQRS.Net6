@@ -1,26 +1,30 @@
 ﻿using Microsoft.Extensions.Hosting;
 using My.DDD.CQRS.Temp6.Logging.Tracing;
-#if !DEBUG
+//#if !DEBUG
 using Elastic.Apm.NetCoreAll;
-#endif
+//#endif
 using Serilog;
+using Elastic.Apm.SerilogEnricher;
 
 namespace My.DDD.CQRS.Temp6.Logging.Extensions
 {
-    public static class HostBuilderExtensions
+  public static class HostBuilderExtensions
+  {
+    public static IHostBuilder UseLog(this IHostBuilder hostBuilder)
     {
-        public static IHostBuilder UseLog(this IHostBuilder hostBuilder)
-        {
-            TraceHelper.LogConsole();
+      //#if !DEBUG
+      hostBuilder.UseAllElasticApm();
+      //#endif
+      var logger = new LoggerConfiguration()
+         .Enrich.WithElasticApmCorrelationInfo()
+         .WriteTo.Console(outputTemplate: "[{ElasticApmTraceId} {ElasticApmTransactionId} {Message:lj} {NewLine}{Exception}")
+         .CreateLogger();
+      TraceHelper.LogConsole();
 
-            hostBuilder.UseSerilog();
+      hostBuilder.ConfigureLogging(builder => builder.AddSerilog(logger));
 
-#if !DEBUG
-    hostBuilder.UseAllElasticApm();
-#endif
-
-            return hostBuilder;
-        }
+      return hostBuilder;
     }
+  }
 
 }
