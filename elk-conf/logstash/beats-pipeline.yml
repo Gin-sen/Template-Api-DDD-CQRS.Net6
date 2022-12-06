@@ -1,3 +1,4 @@
+# beats.yml
 input {
     beats {
         port => 5044

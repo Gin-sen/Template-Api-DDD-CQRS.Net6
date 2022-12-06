@@ -1,38 +1,32 @@
+# http.yml
 input {
     http {
         id => "http"
         port => 6044
         codec => json
-        add_field => { "[@metadata][x_environment]" => "%{[header][x_environment]}"}
     }
 }
 
 ## Add your filters / logstash plugins configuration here
 filter {
-    mutate {
-        if [@metadata][x_environment] in [ "test", "dev", "inte", "preprod", "recette" ] {
+    if [x_environment] in [ "test", "dev", "inte", "preprod", "recette" ] {
+        mutate {
             add_field => { "[@metadata][target_environment]" => "dev" }
-        } else if [@metadata][x_environment] == "production" {
+        }
+    } else if [x_environment] == "production" {
+        mutate {
             add_field => { "[@metadata][target_environment]" => "prod" }
-        } else {
+        }
+    } else {
+        mutate {
             add_field => { "[@metadata][target_environment]" => "unknown" }
         }
+    }
+    mutate {
+        remove_field => [ "x_environment" ]
     }
 }
 
 output {
     pipeline { send_to => [commonOut] }
 }
-
-
-#output {
-#    elasticsearch {
-#        hosts => ["http://elasticsearch:9200"]
-#        user => "logstash_internal"
-#        password => "${LOGSTASH_INTERNAL_PASSWORD}"
-#        data_stream => "true"
-#        data_stream_dataset => "generic-%{[@metadata][target_environment]}"
-#        data_stream_namespace => "default"
-#        data_stream_type => "logs"
-#    }
-#}
