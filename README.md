@@ -79,19 +79,60 @@ C_UUID=$(curl -s --location --request GET 'http://localhost:9200/' -u "elastic:$
 
 Redémarer Logstash, Filebeat and Kibana pour se re-connecter à Elasticsearch avec ces mots de passe :
 ```bash
-docker-compose up -d filebeat logstash kibana
+docker-compose up -d filebeat logstash kibana heartbeat metricbeat apm-server fleet-server
 ```
 
 
+<details>
+<summary>Index Lifeecycle Management (Dev Tools ELK)</summary>
+Se connecter avec l'utilisateur `elastic` sur [Kibana](http://localhost:5601) et dans la Dev Tools, modifiez les 3 ILM suivantes (un seul exemple pour brièveté) :
+```curl
+GET _ilm/policy/filebeat
+GET _ilm/policy/metricbeat
+GET _ilm/policy/heartbeat
 
-NOTES
-```yaml
-
-
-- module: beat
-  metricsets:
-    - stats
-    - state
-  period: 10s
-  hosts: ["http://filebeat:5066"]
+# ici, les timings sont très courts car environnement local
+# hot 20min ou max size ou max doc => rollover
+# 10min après le rollover => passage en warm
+# 30min après le rollover => passage en cold
+# 2h après le rollover => suppression de l'index
+PUT _ilm/policy/heartbeat
+{
+  "policy": {
+    "phases": {
+      "hot": {
+        "min_age": "0ms",
+        "actions": {
+          "rollover": {
+            "max_primary_shard_size": "50mb",
+            "max_age": "20m",
+            "max_primary_shard_docs": 8000
+          }
+        }
+      },
+      "warm": {
+        "min_age": "10m",
+        "actions": {
+          "set_priority": {
+            "priority": 50
+          }
+        }
+      },
+      "cold": {
+        "min_age": "30m",
+        "actions": {
+          "set_priority": {
+            "priority": 0
+          }
+        }
+      },
+      "delete": {
+        "min_age": "2h",
+        "actions": {
+          "delete": {}
+        }
+      }
+    }
+  }
+}
 ```

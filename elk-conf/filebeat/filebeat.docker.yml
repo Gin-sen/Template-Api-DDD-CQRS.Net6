@@ -13,7 +13,7 @@ processors:
 
 output.elasticsearch:
   hosts: '${ELASTICSEARCH_HOSTS:elasticsearch:9200}'
-  username: '${ELASTICSEARCH_USERNAME:}'
+  username: '${ELASTICSEARCH_USERNAME:elastic}'
   password: '${ELASTICSEARCH_PASSWORD:}'
 
 ## HTTP endpoint for health checking
@@ -25,7 +25,6 @@ http:
 
 monitoring:
   enabled: true
-  cluster_uuid: '${CLUSTER_UUID:}'
   elasticsearch:
     username: beats_system
     password: ${BEATS_SYSTEM_PASSWORD:}

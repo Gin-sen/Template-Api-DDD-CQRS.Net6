@@ -19,7 +19,8 @@
         "setup": "DoNotStart",
         "metricbeat": "DoNotStart",
         "apm-server": "DoNotStart",
-        "fleet-server": "DoNotStart"
+        "fleet-server": "DoNotStart",
+        "heartbeat": "DoNotStart"
       }
     },
     "With ELK": {
@@ -41,7 +42,8 @@
         "setup": "DoNotStart",
         "metricbeat": "StartWithoutDebugging",
         "apm-server": "StartWithoutDebugging",
-        "fleet-server": "StartWithoutDebugging"
+        "fleet-server": "StartWithoutDebugging",
+        "heartbeat": "StartWithoutDebugging"
       }
     },
     "Setup ELK": {
@@ -60,7 +62,8 @@
         "setup": "StartWithoutDebugging",
         "metricbeat": "DoNotStart",
         "apm-server": "DoNotStart",
-        "fleet-server": "DoNotStart"
+        "fleet-server": "DoNotStart",
+        "heartbeat": "DoNotStart"
       }
     },
     "Reboot ELK": {
@@ -79,7 +82,8 @@
         "setup": "DoNotStart",
         "metricbeat": "StartWithoutDebugging",
         "apm-server": "StartWithoutDebugging",
-        "fleet-server": "StartWithoutDebugging"
+        "fleet-server": "StartWithoutDebugging",
+        "heartbeat": "StartWithoutDebugging"
       }
     }
   }

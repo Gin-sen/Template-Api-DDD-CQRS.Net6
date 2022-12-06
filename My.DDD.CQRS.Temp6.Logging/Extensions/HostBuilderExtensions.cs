@@ -19,7 +19,6 @@ namespace My.DDD.CQRS.Temp6.Logging.Extensions
          .Enrich.WithElasticApmCorrelationInfo()
          .WriteTo.Console(outputTemplate: "[{ElasticApmTraceId} {ElasticApmTransactionId} {Message:lj} {NewLine}{Exception}")
          .CreateLogger();
-      TraceHelper.LogConsole();
 
       hostBuilder.ConfigureLogging(builder => builder.AddSerilog(logger));
 

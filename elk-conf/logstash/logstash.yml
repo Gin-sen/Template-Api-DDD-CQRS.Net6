@@ -8,7 +8,7 @@ node.name: logstash
 
 monitoring:
   enabled: true
-  cluster_uuid: '${CLUSTER_UUID:}'
   elasticsearch:
+    hosts: [ "http://elasticsearch:9200" ]
     username: beats_system
     password: ${BEATS_SYSTEM_PASSWORD:}

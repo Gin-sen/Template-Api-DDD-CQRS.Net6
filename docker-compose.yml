@@ -159,5 +159,23 @@ services:
       - elasticsearch
       - kibana
       - fleet-server
+
+  heartbeat:
+    image: docker.elastic.co/beats/heartbeat:8.5.2
+    container_name: heartbeat
+    command:
+      # Log to stderr.
+      - -e
+      # Disable config file permissions checks. Allows mounting
+      # 'config/heartbeat.yml' even if it's not owned by root.
+      # see: https://www.elastic.co/guide/en/beats/libbeat/current/config-file-permissions.html
+      - --strict.perms=false
+    env_file:
+    - .env
+    networks:
+      - backend_net
+    depends_on:
+      - elasticsearch
+
 networks:
   backend_net:

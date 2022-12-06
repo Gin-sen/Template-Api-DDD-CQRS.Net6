@@ -1,0 +1,48 @@
+- pipeline.id: beats
+  path.config: "/usr/share/logstash/pipeline/beats-pipeline.yml"
+- pipeline.id: http
+  path.config: "/usr/share/logstash/pipeline/http-pipeline.yml"
+- pipeline.id: tcp
+  path.config: "/usr/share/logstash/pipeline/tcp-pipeline.yml"
+- pipeline.id: dispatcher
+  # This common pipeline enforces the same logic whether data comes from Kafka or Beats
+  config.string: |
+    input { pipeline { address => commonOut } }
+    #filter {
+    #  # Always remove sensitive data from all input sources
+    #  mutate { remove_field => 'sensitive-data' }
+    #}
+    output { 
+        if [@metadata][target_environment] {
+          pipeline { send_to => applogs }
+        } else {
+          pipeline { send_to => fallback }
+        }
+    }
+- pipeline.id: apps
+  config.string: |
+    input { pipeline { address => applogs } }
+    filter {
+       # apps filter statements here...
+    }
+    output {
+        elasticsearch {
+            hosts => ["http://elasticsearch:9200"]
+            user => "logstash_internal"
+            password => "${LOGSTASH_INTERNAL_PASSWORD}"
+            data_stream => "true"
+            data_stream_dataset => "generic-%{[@metadata][target_environment]}"
+            data_stream_namespace => "default"
+            data_stream_type => "logs"
+        }
+    }
+- pipeline.id: fallback
+  config.string: |
+    input { pipeline { address => fallback } }
+    output {
+        elasticsearch {
+            hosts => ["http://elasticsearch:9200"]
+            user => "logstash_internal"
+            password => "${LOGSTASH_INTERNAL_PASSWORD}"
+        }
+    }

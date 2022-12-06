@@ -81,9 +81,13 @@ services:
   logstash:
     volumes:
       - ./elk-conf/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
-      - ./elk-conf/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro,Z
+      - ./elk-conf/logstash/beats-pipeline.yml:/usr/share/logstash/pipeline/beats-pipeline.yml:ro,Z
+      - ./elk-conf/logstash/tcp-pipeline.yml:/usr/share/logstash/pipeline/tcp-pipeline.yml:ro,Z
+      - ./elk-conf/logstash/http-pipeline.yml:/usr/share/logstash/pipeline/http-pipeline.yml:ro,Z
+      - ./elk-conf/logstash/pipelines.yml:/usr/share/logstash/pipeline/pipelines.yml:ro,Z
     ports:
       - 5044:5044
+      - 6044:6044
       - 50000:50000/tcp
       - 50000:50000/udp
       - 9600:9600
@@ -120,6 +124,8 @@ services:
       FILEBEAT_INTERNAL_PASSWORD: ${FILEBEAT_INTERNAL_PASSWORD-}
       BEATS_SYSTEM_PASSWORD: ${BEATS_SYSTEM_PASSWORD-}
       CLUSTER_UUID: ${CLUSTER_UUID-}
+      ELASTICSEARCH_USERNAME: elastic
+      ELASTICSEARCH_PASSWORD: ${ELASTIC_PASSWORD-}
 
   metricbeat:
     volumes:
@@ -175,6 +181,13 @@ services:
       #FLEET_ENROLLMENT_TOKEN: <enrollment_token>
     ports:
       - 8200:8200
+
+  heartbeat:
+    volumes:
+      - ./elk-conf/heartbeat/heartbeat.yml:/usr/share/heartbeat/heartbeat.yml:ro,Z
+    environment:
+      HEARTBEAT_INTERNAL_PASSWORD: ${HEARTBEAT_INTERNAL_PASSWORD-}
+      BEATS_SYSTEM_PASSWORD: ${BEATS_SYSTEM_PASSWORD-}
 
 volumes:
   dbvolume:
