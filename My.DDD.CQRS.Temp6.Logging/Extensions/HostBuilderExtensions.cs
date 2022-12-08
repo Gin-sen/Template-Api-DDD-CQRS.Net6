@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Hosting;
-using My.DDD.CQRS.Temp6.Logging.Tracing;
 //#if !DEBUG
 using Elastic.Apm.NetCoreAll;
 //#endif

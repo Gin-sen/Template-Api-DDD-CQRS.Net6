@@ -24,5 +24,6 @@ public class Startup
   public void Configure(WebApplication app, IWebHostEnvironment environment)
   {
     app.UseHttpArchitecture();
+
   }
 }
