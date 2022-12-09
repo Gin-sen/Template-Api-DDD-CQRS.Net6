@@ -8,6 +8,6 @@ namespace My.DDD.CQRS.Temp6.Elastic.Clients
 {
   public interface ILogstashClientService
   {
-    Task SendLog(string indexName, string message);
+    Task SendLog(string indexName, object message);
   }
 }

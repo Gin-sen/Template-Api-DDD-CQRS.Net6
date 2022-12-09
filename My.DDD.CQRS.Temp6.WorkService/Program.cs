@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging.Configuration;
 using My.DDD.CQRS.Temp6.Logging.Extensions;
 using My.DDD.CQRS.Temp6.WorkService.Services;
 
@@ -10,8 +11,15 @@ namespace My.DDD.CQRS.Temp6.WorkService
     {
       using IHost host = Host.CreateDefaultBuilder(args)
         .ConfigureLogging(builder =>
-          builder.ClearProviders()
-            .AddLogstashLogger())
+        {
+          // Init Logging conf
+          builder.ClearProviders();
+          builder.AddConfiguration();
+
+          // Add multiple loggers
+          builder.AddLogstashLogger();
+          builder.AddApmSerilogLogger();
+        })
         .ConfigureServices(services =>
         {
           // Timer implementation

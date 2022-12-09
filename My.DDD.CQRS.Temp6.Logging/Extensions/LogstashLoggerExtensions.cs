@@ -15,9 +15,7 @@ namespace My.DDD.CQRS.Temp6.Logging.Extensions
   public static class LogstashLoggerExtensions
   {
     public static ILoggingBuilder AddLogstashLogger(this ILoggingBuilder builder)
-    {
-      builder.AddConfiguration();
-      
+    {      
       builder.Services.TryAddEnumerable(
         ServiceDescriptor.Singleton<ILoggerProvider, LogstashLoggerProvider>());
 

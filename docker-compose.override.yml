@@ -19,6 +19,7 @@ services:
   my.ddd.cqrs.temp6.workservice:
     environment:
       - DOTNET_ENVIRONMENT=Development
+      - Logstash__Url=http://logstash:6044
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
