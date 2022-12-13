@@ -7,6 +7,7 @@ services:
     depends_on:
     - local.azurite
     - local.mariadb
+    - local.rabbit
     build:
       context: .
       dockerfile: My.DDD.CQRS.Temp6.Api/Dockerfile
@@ -22,6 +23,7 @@ services:
     container_name: mydddcqrstemp6workservice
     depends_on:
     - my.ddd.cqrs.temp6.api
+    - local.rabbit
     networks:
     - backend_net
       
@@ -49,7 +51,14 @@ services:
     - "3308"
     networks:
     - backend_net
-    
+
+  local.rabbit:
+    image: rabbitmq:3-management
+    container_name: local.rabbit
+    restart: unless-stopped
+    networks:
+     - backend-net
+
   phpmyadmin:
     image: phpmyadmin
     container_name: phpmyadmin

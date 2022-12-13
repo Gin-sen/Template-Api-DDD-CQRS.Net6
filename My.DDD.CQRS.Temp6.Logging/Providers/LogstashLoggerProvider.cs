@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using My.DDD.CQRS.Temp6.Logging.Configurations;
 using My.DDD.CQRS.Temp6.Logging.Loggers;
@@ -20,11 +21,13 @@ namespace My.DDD.CQRS.Temp6.Logging.Providers
     private LogstashLoggerConfiguration _currentConfig;
     private readonly ConcurrentDictionary<string, LogstashLogger> _loggers =
       new(StringComparer.OrdinalIgnoreCase);
+    private readonly IConfiguration _apiconfiguration;
 
-    public LogstashLoggerProvider(IOptionsMonitor<LogstashLoggerConfiguration> config)
+    public LogstashLoggerProvider(IOptionsMonitor<LogstashLoggerConfiguration> config, IConfiguration apiconfiguration)
     {
       _currentConfig = config.CurrentValue;
       _onChangeToken = config.OnChange(updatedConfig => _currentConfig = updatedConfig);
+      _apiconfiguration = apiconfiguration;
     }
 
 

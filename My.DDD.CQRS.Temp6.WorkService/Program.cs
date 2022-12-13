@@ -6,8 +6,8 @@ namespace My.DDD.CQRS.Temp6.WorkService
 {
   public class Program
   {
-    //public static async Task Main(string[] args)
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
+    //public static void Main(string[] args)
     {
       using IHost host = Host.CreateDefaultBuilder(args)
         .ConfigureLogging(builder =>
@@ -40,8 +40,8 @@ namespace My.DDD.CQRS.Temp6.WorkService
       logger.LogTrace(5!, "== 120.");                   // Not logged
 
 
-      //await host.RunAsync();
-      host.Run();
+      await host.RunAsync();
+      //host.Run();
     }
   }
 }
